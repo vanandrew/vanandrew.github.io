@@ -1,0 +1,42 @@
+---
+---
+
+@import "{{ site.theme }}";
+// @import url('https://fonts.googleapis.com/css?family=Manjari:100&display=swap');
+/* Make edits to css */
+
+$wc: #ddd;
+
+header h1:before {
+  content: "";
+  padding-left: 40px;
+}
+
+header h1,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+li,
+p {
+  // font-family: 'Manjari', sans-serif;
+  // font-weight: 100;
+  color: $wc;
+}
+
+th,
+hr,
+header {
+  border-bottom: 1px dashed $wc;
+  color: $wc;
+}
+
+pre {
+  color: $wc;
+}
+
+ul li {
+  list-style-image: initial;
+}
