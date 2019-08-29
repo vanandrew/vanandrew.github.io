@@ -30,7 +30,7 @@ twitter_username: vannatandrew
 github_username:  vanandrew
 
 # Build settings
-theme: midnight
+theme: jekyll-theme-midnight
 plugins:
   - jekyll-feed
 
