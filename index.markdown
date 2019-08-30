@@ -12,4 +12,6 @@ layout: default
   {% endfor %}
 </ul>
 
+$$ a = 1 $$
+
 [CSS Test](./test.html)
