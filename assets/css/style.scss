@@ -2,7 +2,6 @@
 ---
 
 @import "{{ site.theme }}";
-// @import url('https://fonts.googleapis.com/css?family=Manjari:100&display=swap');
 /* Make edits to css */
 
 $wc: #ddd;
@@ -21,8 +20,6 @@ h5,
 h6,
 li,
 p {
-  // font-family: 'Manjari', sans-serif;
-  // font-weight: 100;
   color: $wc;
 }
 
@@ -39,4 +36,8 @@ pre {
 
 ul li {
   list-style-image: initial;
+}
+
+.subheader {
+  font-size: 0.75rem;
 }
