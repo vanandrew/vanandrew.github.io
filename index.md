@@ -5,7 +5,7 @@ layout: default
 # Posts
 
 {% for post in site.posts %}
-  <div class="card">
+  <div class="card post">
     <div class="card-header">
     {{ post.date | date: '%d %B %Y' }} - <a href="{{ post.url }}">{{ post.title }}</a>
     </div>
