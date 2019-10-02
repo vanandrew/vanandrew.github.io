@@ -28,7 +28,7 @@ github_username:  vanandrew
 
 # Build settings
 theme: jekyll-theme-hacker
-paginate: 2
+paginate: 5
 plugins:
   - jekyll-feed
   - jekyll-paginate
