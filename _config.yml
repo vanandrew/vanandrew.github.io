@@ -28,8 +28,10 @@ github_username:  vanandrew
 
 # Build settings
 theme: jekyll-theme-hacker
+paginate: 2
 plugins:
   - jekyll-feed
+  - jekyll-paginate
 
 # Exclude from processing.
 # The following items will not be processed, by default.
