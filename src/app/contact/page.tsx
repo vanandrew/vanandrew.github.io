@@ -20,19 +20,17 @@ export default function Contact() {
                 Feel free to contact me using the form or through my social media profiles.
               </p>
               <div className="flex space-x-6 mb-8">
-                <a href="#" className="text-apple-gray hover:text-white transition-colors">
+                <a href="https://github.com/vanandrew" className="text-apple-gray hover:text-white transition-colors">
                   <FaGithub size={24} />
                 </a>
-                <a href="#" className="text-apple-gray hover:text-white transition-colors">
+                <a href="https://www.linkedin.com/in/andrew-n-van" className="text-apple-gray hover:text-white transition-colors">
                   <FaLinkedin size={24} />
-                </a>
-                <a href="#" className="text-apple-gray hover:text-white transition-colors">
-                  <FaTwitter size={24} />
                 </a>
               </div>
               <div className="space-y-3 text-apple-gray">
-                <p><span className="text-white">Email:</span> your.email@example.com</p>
-                <p><span className="text-white">Location:</span> Your City, Country</p>
+                <p><span className="text-white">Email:</span> vanandrew77@gmail.com</p>
+                <p><span className="text-white">Phone:</span> 469-288-9022</p>
+                <p><span className="text-white">Location:</span> United States</p>
               </div>
             </div>
             <div className="apple-card p-8">

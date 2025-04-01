@@ -11,8 +11,8 @@ export default function Home() {
       <section className="pt-40 pb-20 bg-gradient-radial from-apple-darkgray to-black text-white">
         <div className="container-custom grid md:grid-cols-2 gap-12 items-center">
           <div>
-            <h1 className="text-5xl font-medium mb-6 leading-tight">Hi, I'm [Your Name]</h1>
-            <p className="text-xl text-apple-gray mb-8">A passionate developer building amazing web experiences</p>
+            <h1 className="text-5xl font-medium mb-6 leading-tight">Hi, I'm Andrew Van</h1>
+            <p className="text-xl text-apple-gray mb-8">Innovative Data Scientist with 9 years of experience in developing advanced medical applications</p>
             <div className="flex space-x-4">
               <Button href="/contact" variant="primary" size="large">Contact Me</Button>
               <Button href="/projects" variant="outline" size="large">View My Work</Button>

@@ -26,7 +26,7 @@ const Navbar: React.FC = () => {
       isScrolled ? 'apple-blur-bg py-4 backdrop-blur-xl' : 'bg-transparent py-6'
     }`}>
       <div className="container-custom flex justify-between items-center">
-        <div className="text-xl font-medium text-white">NoNonsense</div>
+        <div className="text-xl font-medium text-white">Andrew Van</div>
         
         {/* Mobile menu button */}
         <button 

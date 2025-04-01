@@ -9,19 +9,16 @@ const Footer: React.FC = () => {
         <div className="grid md:grid-cols-3 gap-12">
           {/* About */}
           <div>
-            <h3 className="text-lg font-medium mb-4">NoNonsense</h3>
+            <h3 className="text-lg font-medium mb-4">Andrew Van</h3>
             <p className="text-apple-gray text-sm mb-6 leading-relaxed">
-              A personal portfolio website showcasing my projects and skills with a minimalist Apple-inspired design.
+              Innovative Data Scientist with 9 years of experience in developing advanced medical applications.
             </p>
             <div className="flex space-x-6">
-              <a href="#" className="text-apple-gray hover:text-white transition-colors">
+              <a href="https://github.com/vanandrew" className="text-apple-gray hover:text-white transition-colors">
                 <FaGithub size={18} />
               </a>
-              <a href="#" className="text-apple-gray hover:text-white transition-colors">
+              <a href="https://www.linkedin.com/in/andrew-n-van" className="text-apple-gray hover:text-white transition-colors">
                 <FaLinkedin size={18} />
-              </a>
-              <a href="#" className="text-apple-gray hover:text-white transition-colors">
-                <FaTwitter size={18} />
               </a>
             </div>
           </div>
@@ -41,14 +38,15 @@ const Footer: React.FC = () => {
           <div>
             <h3 className="text-lg font-medium mb-4">Contact</h3>
             <ul className="space-y-3 text-sm">
-              <li className="text-apple-gray">Email: your.email@example.com</li>
-              <li className="text-apple-gray">Location: Your City, Country</li>
+              <li className="text-apple-gray">Email: vanandrew77@gmail.com</li>
+              <li className="text-apple-gray">Phone: 469-288-9022</li>
+              <li className="text-apple-gray">Location: United States</li>
             </ul>
           </div>
         </div>
         
         <div className="border-t border-white/10 mt-12 pt-8 text-center">
-          <p className="text-apple-gray text-sm">© {new Date().getFullYear()} NoNonsense Portfolio. All rights reserved.</p>
+          <p className="text-apple-gray text-sm">© {new Date().getFullYear()} Andrew Van. All rights reserved.</p>
           <p className="mt-2 text-apple-gray text-xs">Built with Next.js and Tailwind CSS</p>
         </div>
       </div>
