@@ -27,11 +27,6 @@ export default function Contact() {
                   <FaLinkedin size={24} />
                 </a>
               </div>
-              <div className="space-y-3 text-mono-gray text-lg">
-                <p><span className="text-mono-black font-medium">Email:</span> vanandrew77@gmail.com</p>
-                <p><span className="text-mono-black font-medium">Phone:</span> 469-288-9022</p>
-                <p><span className="text-mono-black font-medium">Location:</span> United States</p>
-              </div>
             </div>
             <div className="mono-card p-8 border border-mono-lightgray">
               <ContactForm />

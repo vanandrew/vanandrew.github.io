@@ -44,18 +44,6 @@ const Footer: React.FC = () => {
               <li><Link href="/contact" className="text-mono-gray hover:text-mono-black transition-colors">Contact</Link></li>
             </ul>
           </div>
-          
-          {/* Contact - spans 2 columns */}
-          <div className="md:col-span-2 md:col-start-11">
-            <h3 className="text-xl font-light mb-6 relative inline-block">
-              Contact
-            </h3>
-            <ul className="space-y-4 text-base">
-              <li className="text-mono-gray">Email: vanandrew77@gmail.com</li>
-              <li className="text-mono-gray">Phone: 469-288-9022</li>
-              <li className="text-mono-gray">Location: United States</li>
-            </ul>
-          </div>
         </div>
         
         <div className="border-t border-mono-lightgray mt-16 pt-8 text-center">
