@@ -1,0 +1,384 @@
+{
+    "basics": {
+      "name": "Andrew Van",
+      "label": "Senior Machine Learning Scientist @ Turing Medical",
+      "picture": "",
+      "email": "",
+      "website": "https://github.com/vanandrew",
+      "summary": "Magnetic Resonance Imaging, Image Science, Machine Learning/Deep Learning, NeuroImaging",
+      "location": {
+        "address": "",
+        "postalCode": "",
+        "city": "",
+        "countryCode": "",
+        "region": ""
+      },
+      "profiles": [],
+      "phone": "+1 469-288-9022"
+    },
+    "work": [
+      {
+        "company": "Turing Medical",
+        "position": "Senior Machine Learning Scientist",
+        "website": "",
+        "startDate": "2025-03-01",
+        "summary": "",
+        "highlights": []
+      },
+      {
+        "company": "Turing Medical",
+        "position": "Machine Learning Scientist",
+        "website": "",
+        "startDate": "2023-11-01",
+        "summary": "• Led the development of a visual programming application for Deep Brain Stimulation (DBS) surgical procedures, enhancing lead programming for clinicians and improving patient outcomes. • Built cloud-based neuroimaging pipelines for clinical targeting in movement-related disorders, improving processing efficiency and scalability for large unstructured patient datasets. • Engineered machine learning algorithms to address image segmentation and neuromodulation therapy challenges, in MR and CT imaging modalities. • Optimized R&D infrastructure to support cross-functional teams, ensuring smooth collaboration and faster iteration cycles, reducing product integration testing time from 6 months to 2 weeks. • Streamlined development workflows by implementing and maintaining Continuous Integration (CI) pipelines (GitHub Actions) across multiple repositories, automating manual deployments that spanned 1-2 weeks to 2-3 hours. • Conducted comprehensive verification & validation utilization with advanced statistical methodologies on multiple software tools, confirming compliance with industry standards (IEC 62304).",
+        "highlights": [],
+        "endDate": "2025-03-01"
+      },
+      {
+        "company": "University of Pennsylvania Perelman School of Medicine",
+        "position": "Visiting Scholar",
+        "website": "",
+        "startDate": "2023-06-01",
+        "summary": "• Investigated and validated novel MR sampling strategies for compressed sensing in the Siemens IDEA environment, achieving faster scan times and improved image reconstruction efficiency.",
+        "highlights": [],
+        "endDate": "2023-08-01"
+      },
+      {
+        "company": "Washington University in St. Louis",
+        "position": "Ph.D. Candidate in Biomedical Engineering",
+        "website": "",
+        "startDate": "2018-08-01",
+        "summary": "• Engineered novel off-resonance distortion correction methods for echo planar imaging, improving fMRI accuracy and reliability. • Developed Docker-containerized MRI preprocessing pipelines, enabling streamlined functional connectivity analyses across research projects. • Created 3D visualization software for examining spatial changes in functional connectivity, enhancing neural process analysis. • Trained deep learning models (GANs, CNNs) for data augmentation and image segmentation applications, enhancing fMRI preprocessing workflows. • Developed and maintained research infrastructure for lab group, including GitHub repos, CI pipelines, and storage of unstructured MRI imaging and behavioral data totaling over 10 TB. • Carried out administrative activities for several high performance linux servers for entire lab group.",
+        "highlights": [],
+        "endDate": "2023-11-01"
+      },
+      {
+        "company": "Washington University School of Medicine",
+        "position": "Neuro Imaging Research Technician",
+        "website": "",
+        "startDate": "2016-08-01",
+        "summary": "• Streamlined analysis pipelines for structural and functional MRI data, leveraging Python, C/C++, M ATLAB, JavaScript (Node.js), and Bash to support cutting-edge neuroimaging studies. • Developed a real-time head motion tracking system (Framewise Integrated Real-Time MRI Monitor, FIRMM) for MRI scanners, culminating in a patented technology and a successful spin-off startup. • Implemented containerized applications using Docker and created deployment tools for cloud platforms (AWS, Heroku), improving scalability and collaboration across research teams.",
+        "highlights": [],
+        "endDate": "2018-08-01"
+      },
+      {
+        "company": "National Institutes of Health",
+        "position": "Summer Intern",
+        "website": "",
+        "startDate": "2013-06-01",
+        "summary": "• Examined mitochondrial function in the substantia nigra as a potential biomarker for Parkinson's Disease using 31-P Chemical Shift MRI data. Wrote an automated analysis pipeline in MATLAB.",
+        "highlights": [],
+        "endDate": "2013-08-01"
+      },
+      {
+        "company": "Texas A&M University",
+        "position": "Research Assistant",
+        "website": "",
+        "startDate": "2012-01-01",
+        "summary": "• Developed control system for a custom Reflectance Confocal Microscopy imaging system using NI LabView. • Developed an image segmentation algorithm for segmenting cell nuclei in Reflectance Confocal Microscopy images using machine learning techniques.",
+        "highlights": [],
+        "endDate": "2014-05-01"
+      },
+      {
+        "company": "Saint Louis University",
+        "position": "Summer Intern",
+        "website": "",
+        "startDate": "2011-05-01",
+        "summary": "• Conducted experiments optimizing a proof-of-concept dual-wavelength glucose biosensor design by synthesizing and testing various chemical compositions.",
+        "highlights": [],
+        "endDate": "2011-08-01"
+      }
+    ],
+    "education": [
+      {
+        "institution": "Washington University in St. Louis",
+        "area": "",
+        "studyType": "Doctor of Philosophy - PhD",
+        "startDate": "2018-09-01",
+        "gpa": "",
+        "courses": [],
+        "endDate": "2023-09-01"
+      },
+      {
+        "institution": "Texas A&M University",
+        "area": "",
+        "studyType": "Bachelor of Science (B.S.)",
+        "startDate": "2009-12-31",
+        "gpa": "",
+        "courses": [],
+        "endDate": "2013-12-31"
+      }
+    ],
+    "skills": [
+      {
+        "name": "Functional Neuroimaging",
+        "level": "",
+        "keywords": []
+      },
+      {
+        "name": "Python",
+        "level": "",
+        "keywords": []
+      },
+      {
+        "name": "C++",
+        "level": "",
+        "keywords": []
+      },
+      {
+        "name": "Machine Learning",
+        "level": "",
+        "keywords": []
+      },
+      {
+        "name": "Linux",
+        "level": "",
+        "keywords": []
+      },
+      {
+        "name": "Bash",
+        "level": "",
+        "keywords": []
+      },
+      {
+        "name": "Git",
+        "level": "",
+        "keywords": []
+      },
+      {
+        "name": "Computer Graphics",
+        "level": "",
+        "keywords": []
+      },
+      {
+        "name": "Three.js",
+        "level": "",
+        "keywords": []
+      },
+      {
+        "name": "WebGL",
+        "level": "",
+        "keywords": []
+      },
+      {
+        "name": "Matlab",
+        "level": "",
+        "keywords": []
+      },
+      {
+        "name": "C",
+        "level": "",
+        "keywords": []
+      },
+      {
+        "name": "JavaScript",
+        "level": "",
+        "keywords": []
+      },
+      {
+        "name": "C#",
+        "level": "",
+        "keywords": []
+      },
+      {
+        "name": "React.js",
+        "level": "",
+        "keywords": []
+      },
+      {
+        "name": "TypeScript",
+        "level": "",
+        "keywords": []
+      },
+      {
+        "name": "Object-Oriented Programming (OOP)",
+        "level": "",
+        "keywords": []
+      },
+      {
+        "name": "High Performance Computing (HPC)",
+        "level": "",
+        "keywords": []
+      },
+      {
+        "name": "Biomedical Engineering",
+        "level": "",
+        "keywords": []
+      },
+      {
+        "name": "Image Processing",
+        "level": "",
+        "keywords": []
+      },
+      {
+        "name": "Django",
+        "level": "",
+        "keywords": []
+      },
+      {
+        "name": "PyTorch",
+        "level": "",
+        "keywords": []
+      },
+      {
+        "name": "TensorFlow",
+        "level": "",
+        "keywords": []
+      },
+      {
+        "name": "NumPy",
+        "level": "",
+        "keywords": []
+      },
+      {
+        "name": "Pandas (Software)",
+        "level": "",
+        "keywords": []
+      },
+      {
+        "name": "Version Control",
+        "level": "",
+        "keywords": []
+      },
+      {
+        "name": "Imaging Science",
+        "level": "",
+        "keywords": []
+      },
+      {
+        "name": "Software Development",
+        "level": "",
+        "keywords": []
+      },
+      {
+        "name": "Data Science",
+        "level": "",
+        "keywords": []
+      },
+      {
+        "name": "Deep Learning",
+        "level": "",
+        "keywords": []
+      },
+      {
+        "name": "Computer Vision",
+        "level": "",
+        "keywords": []
+      },
+      {
+        "name": "Rust (Programming Language)",
+        "level": "",
+        "keywords": []
+      },
+      {
+        "name": "Image Segmentation",
+        "level": "",
+        "keywords": []
+      },
+      {
+        "name": "Signal Processing",
+        "level": "",
+        "keywords": []
+      },
+      {
+        "name": "Docker",
+        "level": "",
+        "keywords": []
+      },
+      {
+        "name": "Digital Signal Processing",
+        "level": "",
+        "keywords": []
+      },
+      {
+        "name": "Digital Image Processing",
+        "level": "",
+        "keywords": []
+      },
+      {
+        "name": "AutoCAD",
+        "level": "",
+        "keywords": []
+      },
+      {
+        "name": "Solidworks",
+        "level": "",
+        "keywords": []
+      },
+      {
+        "name": "NI LabVIEW",
+        "level": "",
+        "keywords": []
+      },
+      {
+        "name": "Amazon Web Services (AWS)",
+        "level": "",
+        "keywords": []
+      },
+      {
+        "name": "MRI",
+        "level": "",
+        "keywords": []
+      },
+      {
+        "name": "fMRI",
+        "level": "",
+        "keywords": []
+      },
+      {
+        "name": "Bioengineering",
+        "level": "",
+        "keywords": []
+      },
+      {
+        "name": "Biomedical Electronics",
+        "level": "",
+        "keywords": []
+      },
+      {
+        "name": "Computational Neuroscience",
+        "level": "",
+        "keywords": []
+      },
+      {
+        "name": "OpenCV",
+        "level": "",
+        "keywords": []
+      },
+      {
+        "name": "Research",
+        "level": "",
+        "keywords": []
+      },
+      {
+        "name": "Data Analysis",
+        "level": "",
+        "keywords": []
+      },
+      {
+        "name": "Biosensors",
+        "level": "",
+        "keywords": []
+      }
+    ],
+    "projects": [
+      {
+        "name": "brainextractor",
+        "startDate": "Invalid date",
+        "summary": "",
+        "url": "https://github.com/vanandrew/brainextractor"
+      },
+      {
+        "name": "wbsurfer2",
+        "startDate": "Invalid date",
+        "summary": "",
+        "url": "https://github.com/vanandrew/wbsurfer2"
+      },
+      {
+        "name": "warpkit",
+        "startDate": "Invalid date",
+        "summary": "",
+        "url": "https://github.com/vanandrew/warpkit"
+      }
+    ]
+  }

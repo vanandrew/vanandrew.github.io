@@ -14,17 +14,28 @@ export default function About() {
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div>
               <p className="text-apple-gray mb-6 leading-relaxed">
-                Hello! I'm an innovative Data Scientist with 9 years of experience in developing advanced medical applications.
-                I specialize in machine learning, deep learning, and cloud-based solutions for medical imaging and clinical applications.
+                Hello! I'm a Senior Machine Learning Scientist specializing in neuroimaging, image science, and deep learning applications for medical imaging.
+                With extensive experience in MRI and fMRI techniques, I develop cutting-edge algorithms and software solutions for complex medical challenges.
               </p>
               <p className="text-apple-gray mb-6 leading-relaxed">
-                With a background in Biomedical Engineering and a Ph.D. from Washington University in St. Louis, I bring a unique perspective to every project I work on.
-                I'm seeking to leverage my skills to drive impactful solutions in cutting-edge technologies.
+                My work spans from developing novel distortion correction methods for echo planar imaging to building cloud-based neuroimaging pipelines for clinical targeting in movement-related disorders.
+                I'm passionate about creating tools that enhance medical imaging accuracy and improve patient outcomes.
+              </p>
+              <p className="text-apple-gray mb-6 leading-relaxed">
+                With a Ph.D. in Biomedical Engineering from Washington University in St. Louis, I combine strong technical expertise with a deep understanding of clinical applications.
               </p>
               <div className="mt-8">
                 <h3 className="text-xl font-medium mb-4 text-white">My Skills</h3>
                 <div className="flex flex-wrap gap-2">
-                  {['Python', 'C++', 'TypeScript', 'React', 'MATLAB', 'Docker', 'PyTorch', 'AWS', 'Bash', 'git', 'GNU/Linux', 'Data Science', 'Machine Learning', 'Deep Learning', 'Computer Vision', 'Medical Imaging', 'MRI', 'DICOMS'].map((skill) => (
+                  {[
+                    'Python', 'C++', 'JavaScript', 'TypeScript', 'Rust', 'MATLAB', 
+                    'PyTorch', 'TensorFlow', 'NumPy', 'Pandas', 
+                    'Docker', 'AWS', 'CI/CD', 'Git', 'Linux',
+                    'Machine Learning', 'Deep Learning', 'Computer Vision', 
+                    'MRI', 'fMRI', 'Neuroimaging', 'Image Processing',
+                    'Functional Connectivity', 'Image Segmentation',
+                    'Three.js', 'WebGL', 'React.js', 'Django'
+                  ].map((skill) => (
                     <span key={skill} className="bg-black/30 text-apple-gray px-3 py-1 rounded-full text-sm">
                       {skill}
                     </span>
@@ -48,15 +59,27 @@ export default function About() {
                 <h3 className="text-xl font-medium mb-3 text-white">Experience</h3>
                 <div className="mb-4">
                   <p className="text-apple-lightgray">Senior Machine Learning Scientist</p>
-                  <p className="text-apple-gray text-sm">Turing Medical, November 2023 - Present</p>
+                  <p className="text-apple-gray text-sm">Turing Medical, March 2025 - Present</p>
                 </div>
                 <div className="mb-4">
-                  <p className="text-apple-lightgray">Ph.D. Candidate</p>
+                  <p className="text-apple-lightgray">Machine Learning Scientist</p>
+                  <p className="text-apple-gray text-sm">Turing Medical, November 2023 - March 2025</p>
+                </div>
+                <div className="mb-4">
+                  <p className="text-apple-lightgray">Visiting Scholar</p>
+                  <p className="text-apple-gray text-sm">University of Pennsylvania Perelman School of Medicine, June 2023 - August 2023</p>
+                </div>
+                <div className="mb-4">
+                  <p className="text-apple-lightgray">Ph.D. Candidate in Biomedical Engineering</p>
                   <p className="text-apple-gray text-sm">Washington University in St. Louis, August 2018 - November 2023</p>
                 </div>
-                <div>
+                <div className="mb-4">
                   <p className="text-apple-lightgray">Neuro Imaging Research Technician</p>
-                  <p className="text-apple-gray text-sm">Washington University in St. Louis, August 2016 - August 2018</p>
+                  <p className="text-apple-gray text-sm">Washington University School of Medicine, August 2016 - August 2018</p>
+                </div>
+                <div>
+                  <p className="text-apple-lightgray">Research Assistant</p>
+                  <p className="text-apple-gray text-sm">Texas A&M University, January 2012 - May 2014</p>
                 </div>
               </div>
             </div>
