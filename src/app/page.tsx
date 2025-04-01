@@ -134,25 +134,25 @@ export default function Home() {
           <div className="geometric-pattern geometric-triangle w-24 h-24 left-1/3 bottom-1/4 bg-apple-tertiary/5"></div>
         </div>
         
-        <div className="container-custom grid md:grid-cols-12 gap-12 items-center">
+        <div className="container-custom grid md:grid-cols-12 gap-20 items-center">
           {/* Text content - spans 7 columns with asymmetric padding */}
-          <div className="md:col-span-7 md:pr-16">
+          <div className="md:col-span-7 md:pr-20">
             <h1 
               ref={heroTitleRef} 
-              className="text-7xl font-light mb-6 leading-tight opacity-0 relative"
+              className="text-7xl font-light mb-8 leading-tight opacity-0 relative"
             >
               Andrew Van
               <div className="absolute -bottom-3 left-0 h-0.5 w-24 bg-apple-accent"></div>
             </h1>
             <p 
               ref={heroSubtitleRef} 
-              className="text-2xl text-gray-300 mb-10 opacity-0 max-w-xl"
+              className="text-2xl text-gray-300 mb-14 opacity-0 max-w-xl"
             >
               Senior Machine Learning Scientist specializing in Neuroimaging and Medical Applications
             </p>
             <div 
               ref={buttonsRef} 
-              className="flex space-x-6 opacity-0"
+              className="flex space-x-8 opacity-0"
             >
               <Button href="/contact" variant="primary" size="large">Contact Me</Button>
               <Button href="/about" variant="outline" size="large">About Me</Button>
@@ -195,7 +195,7 @@ export default function Home() {
 
       {/* Skills Section */}
       <AnimatedSection 
-        className="py-32 relative" 
+        className="py-40 relative" 
         animation="slideUp" 
         threshold={0.1}
       >
@@ -206,7 +206,7 @@ export default function Home() {
         </div>
         
         <div className="container-custom">
-          <div className="mb-16 text-left max-w-3xl mx-auto">
+          <div className="mb-20 text-left max-w-3xl mx-auto">
             <AnimatedText 
               text="Fast. Precise. Innovative." 
               tag="h2" 
@@ -218,7 +218,7 @@ export default function Home() {
           </div>
           
           {/* Skills grid with asymmetric layout */}
-          <div className="grid md:grid-cols-12 gap-8 mt-20">
+          <div className="grid md:grid-cols-12 gap-12 mt-20">
             {/* Neuroimaging Card - spans 5 columns */}
             <AnimatedSection 
               className="md:col-span-5 md:col-start-1" 
@@ -226,13 +226,13 @@ export default function Home() {
               delay={100} 
               threshold={0.2}
             >
-              <div className="p-8 bg-apple-darkgray/90 backdrop-blur-md rounded-tl-3xl rounded-br-3xl overflow-hidden border border-white/10 hover:border-apple-accent/50 transition-all duration-300 hover:translate-y-[-5px] hover:shadow-lg relative group h-full">
+              <div className="p-10 bg-apple-darkgray/90 backdrop-blur-md rounded-tl-3xl rounded-br-3xl overflow-hidden border border-white/10 hover:border-apple-accent/50 transition-all duration-300 hover:translate-y-[-5px] hover:shadow-lg relative group h-full">
                 {/* Accent elements */}
                 <div className="absolute top-0 right-0 w-24 h-1 bg-apple-accent"></div>
                 <div className="absolute bottom-0 left-0 w-1 h-24 bg-apple-accent"></div>
                 
                 {/* Icon with asymmetric positioning */}
-                <div className="flex justify-start mb-6">
+                <div className="flex justify-start mb-8">
                   <div className="w-16 h-16 rounded-tl-xl rounded-br-xl bg-apple-accent/20 flex items-center justify-center text-apple-accent">
                     <FaBrain size={32} className="animate-pulse" />
                   </div>
@@ -241,7 +241,7 @@ export default function Home() {
                 <AnimatedText 
                   text="Neuroimaging" 
                   tag="h3" 
-                  className="text-3xl mb-4 font-light" 
+                  className="text-3xl mb-6 font-light" 
                   animation="slideUp"
                   threshold={0.2}
                 />
@@ -249,7 +249,7 @@ export default function Home() {
                 <AnimatedText 
                   text="Expert in MRI and fMRI techniques with extensive experience in developing novel algorithms for brain extraction, distortion correction, and functional connectivity analysis." 
                   tag="p" 
-                  className="text-gray-300 mb-6" 
+                  className="text-gray-300 mb-8" 
                   animation="fadeIn"
                   delay={200}
                   threshold={0.2}
@@ -272,13 +272,13 @@ export default function Home() {
               delay={200} 
               threshold={0.2}
             >
-              <div className="p-8 bg-apple-darkgray/90 backdrop-blur-md rounded-tr-3xl rounded-bl-3xl overflow-hidden border border-white/10 hover:border-apple-secondary/50 transition-all duration-300 hover:translate-y-[-5px] hover:shadow-lg relative group h-full">
+              <div className="p-10 bg-apple-darkgray/90 backdrop-blur-md rounded-tr-3xl rounded-bl-3xl overflow-hidden border border-white/10 hover:border-apple-secondary/50 transition-all duration-300 hover:translate-y-[-5px] hover:shadow-lg relative group h-full">
                 {/* Accent elements */}
                 <div className="absolute top-0 left-0 w-24 h-1 bg-apple-secondary"></div>
                 <div className="absolute bottom-0 right-0 w-1 h-24 bg-apple-secondary"></div>
                 
                 {/* Icon with asymmetric positioning */}
-                <div className="flex justify-end mb-6">
+                <div className="flex justify-end mb-8">
                   <div className="w-16 h-16 rounded-tr-xl rounded-bl-xl bg-apple-secondary/20 flex items-center justify-center text-apple-secondary">
                     <FaRobot size={32} />
                   </div>
@@ -287,7 +287,7 @@ export default function Home() {
                 <AnimatedText 
                   text="Machine Learning" 
                   tag="h3" 
-                  className="text-3xl mb-4 font-light text-right" 
+                  className="text-3xl mb-6 font-light text-right" 
                   animation="slideUp"
                   threshold={0.2}
                 />
@@ -295,7 +295,7 @@ export default function Home() {
                 <AnimatedText 
                   text="Proficient in developing deep learning models using PyTorch and TensorFlow for medical image segmentation, data augmentation, and computer vision applications." 
                   tag="p" 
-                  className="text-gray-300 mb-6" 
+                  className="text-gray-300 mb-8" 
                   animation="fadeIn"
                   delay={200}
                   threshold={0.2}
@@ -318,14 +318,14 @@ export default function Home() {
               delay={300} 
               threshold={0.2}
             >
-              <div className="p-8 bg-apple-darkgray/90 backdrop-blur-md rounded-tl-3xl rounded-tr-3xl overflow-hidden border border-white/10 hover:border-apple-tertiary/50 transition-all duration-300 hover:translate-y-[-5px] hover:shadow-lg relative group h-full">
+              <div className="p-10 bg-apple-darkgray/90 backdrop-blur-md rounded-tl-3xl rounded-tr-3xl overflow-hidden border border-white/10 hover:border-apple-tertiary/50 transition-all duration-300 hover:translate-y-[-5px] hover:shadow-lg relative group h-full">
                 {/* Accent elements */}
                 <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-apple-tertiary"></div>
                 <div className="absolute bottom-0 left-0 w-1 h-24 bg-apple-tertiary"></div>
                 <div className="absolute bottom-0 right-0 w-1 h-24 bg-apple-tertiary"></div>
                 
                 {/* Icon with centered positioning */}
-                <div className="flex justify-center mb-6">
+                <div className="flex justify-center mb-8">
                   <div className="w-16 h-16 rounded-full bg-apple-tertiary/20 flex items-center justify-center text-apple-tertiary">
                     <FaCode size={32} />
                   </div>
@@ -334,7 +334,7 @@ export default function Home() {
                 <AnimatedText 
                   text="Software Engineering" 
                   tag="h3" 
-                  className="text-3xl mb-4 font-light text-center" 
+                  className="text-3xl mb-6 font-light text-center" 
                   animation="slideUp"
                   threshold={0.2}
                 />
@@ -342,7 +342,7 @@ export default function Home() {
                 <AnimatedText 
                   text="Skilled in Python, C++, JavaScript, and Rust with expertise in building containerized applications, CI/CD pipelines, and cloud-based infrastructure for research and clinical applications." 
                   tag="p" 
-                  className="text-gray-300 mb-6" 
+                  className="text-gray-300 mb-8" 
                   animation="fadeIn"
                   delay={200}
                   threshold={0.2}
