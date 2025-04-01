@@ -22,9 +22,9 @@ const FullWidthImageSection: React.FC<FullWidthImageSectionProps> = ({
   imageUrl,
   height = '80vh',
   textPosition = 'left',
-  textColor = 'white',
-  overlayColor = 'black',
-  overlayOpacity = 0.4,
+  textColor = 'mono-black',
+  overlayColor = 'white',
+  overlayOpacity = 0.7,
   children
 }) => {
   // Determine text alignment based on position
@@ -34,10 +34,10 @@ const FullWidthImageSection: React.FC<FullWidthImageSectionProps> = ({
     right: 'text-right items-end'
   }[textPosition];
   
-  // If no image URL is provided, use a gradient background
+  // If no image URL is provided, use a white background
   const backgroundStyle = imageUrl 
     ? { backgroundImage: `url(${imageUrl})` }
-    : { background: 'linear-gradient(45deg, #000000, #1d1d1f)' };
+    : { background: '#FFFFFF' };
   
   return (
     <section 
@@ -47,7 +47,7 @@ const FullWidthImageSection: React.FC<FullWidthImageSectionProps> = ({
         height 
       }}
     >
-      {/* Dark overlay */}
+      {/* Light overlay */}
       <div 
         className="absolute inset-0" 
         style={{ 
@@ -56,13 +56,20 @@ const FullWidthImageSection: React.FC<FullWidthImageSectionProps> = ({
         }}
       />
       
-      {/* Content container */}
-      <div className={`relative container-custom h-full flex flex-col justify-center ${textAlignClass}`}>
+      {/* Empty background */}
+      <div className="absolute inset-0 pointer-events-none"></div>
+      
+      {/* Content container with asymmetric padding */}
+      <div className={`relative container-custom h-full flex flex-col justify-center ${textAlignClass} ${
+        textPosition === 'left' ? 'asymmetric-padding-1' : 
+        textPosition === 'right' ? 'asymmetric-padding-2' : 
+        'py-16 px-8'
+      }`}>
         {title && (
           <AnimatedText 
             text={title} 
             tag="h2" 
-            className={`text-6xl md:text-7xl font-medium mb-6 ${textColor}`}
+            className={`text-6xl md:text-7xl font-light mb-12 text-${textColor} max-w-3xl`}
             animation="wordByWord"
             threshold={0.2}
           />
@@ -72,7 +79,7 @@ const FullWidthImageSection: React.FC<FullWidthImageSectionProps> = ({
           <AnimatedText 
             text={subtitle} 
             tag="p" 
-            className={`text-xl md:text-2xl mb-8 max-w-2xl ${textColor === 'white' ? 'text-gray-300' : 'text-gray-700'}`}
+            className={`text-xl md:text-2xl mb-12 max-w-xl text-mono-darkgray`}
             animation="fadeIn"
             delay={300}
             threshold={0.2}

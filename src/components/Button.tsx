@@ -4,7 +4,7 @@ import Link from 'next/link';
 type ButtonProps = {
   children: React.ReactNode;
   href?: string;
-  variant?: 'primary' | 'secondary' | 'outline';
+  variant?: 'primary' | 'secondary' | 'text';
   className?: string;
   onClick?: () => void;
   size?: 'small' | 'medium' | 'large';
@@ -25,13 +25,13 @@ const Button: React.FC<ButtonProps> = ({
   };
   
   const variantStyles = {
-    primary: 'bg-apple-accent text-black hover:bg-white',
-    secondary: 'bg-apple-darkgray text-white hover:bg-black',
-    outline: 'bg-transparent text-apple-accent border border-apple-accent hover:bg-apple-accent/10',
+    primary: 'bg-mono-black text-mono-white hover:bg-mono-darkgray',
+    secondary: 'bg-mono-white text-mono-black border border-mono-black hover:bg-mono-offwhite',
+    text: 'bg-transparent text-mono-black hover:underline',
   };
   
-  // Base styles with asymmetric border radius
-  const baseStyles = `font-light rounded-tl-xl rounded-br-xl rounded-tr-sm rounded-bl-sm transition-all duration-300 ${sizeStyles[size]} ${variantStyles[variant]} ${className}`;
+  // Base styles with minimal design
+  const baseStyles = `font-light transition-all duration-300 ${sizeStyles[size]} ${variantStyles[variant]} ${className}`;
   
   if (href) {
     return (
@@ -47,10 +47,6 @@ const Button: React.FC<ButtonProps> = ({
     <button className={baseStyles} onClick={onClick}>
       <span className="relative">
         {children}
-        {/* Decorative element for asymmetry */}
-        {variant === 'primary' && (
-          <span className="absolute -bottom-1 -right-1 w-2 h-2 bg-apple-secondary rounded-full"></span>
-        )}
       </span>
     </button>
   );

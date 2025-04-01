@@ -6,56 +6,47 @@
 @import url('https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,301,701,300,501,401,901,400&display=swap');
 
 :root {
-  --foreground-rgb: 245, 245, 247;
-  --background-start-rgb: 0, 0, 0;
-  --background-end-rgb: 15, 15, 17;
+  --foreground-rgb: 0, 0, 0;
+  --background-rgb: 255, 255, 255;
 }
 
 html {
   scroll-behavior: smooth;
-  background-color: rgb(0, 0, 0); /* Set HTML background to black */
+  background-color: rgb(255, 255, 255); /* Set HTML background to white */
 }
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      rgb(var(--background-start-rgb)),
-      rgb(var(--background-end-rgb))
-    )
-    rgb(0, 0, 0); /* Add fallback background color */
+  background: rgb(var(--background-rgb));
   min-height: 100vh;
-  background-attachment: fixed; /* Keep the gradient fixed when scrolling */
   font-weight: 300; /* Set Satoshi Light as default */
 }
 
 @layer base {
   h1, h2, h3, h4, h5, h6 {
-    @apply font-light tracking-tight;
+    @apply font-light tracking-tight text-mono-black;
+  }
+  
+  p {
+    @apply text-mono-darkgray;
   }
 }
 
-/* Abstract geometric patterns */
-.geometric-pattern {
+/* Minimalist design elements */
+.line-accent {
   position: absolute;
-  opacity: 0.1;
+  background-color: #000;
   z-index: 0;
-  pointer-events: none;
 }
 
-.geometric-circle {
-  border-radius: 50%;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+.line-accent-h {
+  height: 1px;
+  width: 40px;
 }
 
-.geometric-square {
-  transform: rotate(45deg);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.geometric-triangle {
-  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-  background: rgba(255, 255, 255, 0.1);
+.line-accent-v {
+  width: 1px;
+  height: 40px;
 }
 
 @layer components {
@@ -63,27 +54,44 @@ body {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
   
-  .apple-blur-bg {
-    @apply bg-apple-darkgray/80 backdrop-blur-xl;
+  .navbar-light {
+    @apply bg-mono-white border-b border-mono-lightgray;
   }
   
-  .apple-button {
-    @apply rounded-full px-5 py-2 text-sm font-medium transition-all duration-300;
+  .mono-button {
+    @apply px-5 py-2 text-sm font-light transition-all duration-300;
   }
   
-  .apple-button-primary {
-    @apply apple-button bg-apple-blue text-white hover:bg-apple-darkblue;
+  .mono-button-primary {
+    @apply mono-button bg-mono-black text-mono-white hover:bg-mono-darkgray;
   }
   
-  .apple-button-secondary {
-    @apply apple-button bg-apple-darkgray text-white hover:bg-black;
+  .mono-button-secondary {
+    @apply mono-button bg-mono-white text-mono-black border border-mono-black hover:bg-mono-offwhite;
   }
   
-  .apple-card {
-    @apply bg-apple-darkgray/80 backdrop-blur-md rounded-2xl overflow-hidden border border-white/10;
+  .mono-card {
+    @apply bg-mono-white shadow-sm overflow-hidden;
   }
   
-  .apple-input {
-    @apply bg-black/30 border border-white/10 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-apple-blue;
+  .mono-input {
+    @apply bg-mono-white border border-mono-lightgray px-4 py-3 text-mono-black focus:outline-none focus:ring-1 focus:ring-mono-black;
+  }
+  
+  /* Asymmetric spacing utilities */
+  .asymmetric-padding-1 {
+    @apply pt-12 pr-16 pb-20 pl-8;
+  }
+  
+  .asymmetric-padding-2 {
+    @apply pt-20 pr-8 pb-12 pl-16;
+  }
+  
+  .asymmetric-margin-1 {
+    @apply mt-16 mr-8 mb-4 ml-24;
+  }
+  
+  .asymmetric-margin-2 {
+    @apply mt-4 mr-24 mb-16 ml-8;
   }
 }

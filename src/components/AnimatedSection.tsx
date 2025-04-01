@@ -6,7 +6,7 @@ import anime from 'animejs';
 interface AnimatedSectionProps {
   children: React.ReactNode;
   className?: string;
-  animation?: 'fadeIn' | 'slideUp' | 'scaleIn' | 'parallax';
+  animation?: 'fadeIn' | 'slideUp' | 'slideRight' | 'slideLeft' | 'scaleIn' | 'parallax';
   delay?: number;
   duration?: number;
   threshold?: number;
@@ -60,6 +60,28 @@ const AnimatedSection: React.FC<AnimatedSectionProps> = ({
             targets: section,
             opacity: [0, 1],
             translateY: [50, 0],
+            easing: 'easeOutExpo',
+            duration,
+            delay
+          });
+          break;
+          
+        case 'slideRight':
+          anime({
+            targets: section,
+            opacity: [0, 1],
+            translateX: [-50, 0],
+            easing: 'easeOutExpo',
+            duration,
+            delay
+          });
+          break;
+          
+        case 'slideLeft':
+          anime({
+            targets: section,
+            opacity: [0, 1],
+            translateX: [50, 0],
             easing: 'easeOutExpo',
             duration,
             delay

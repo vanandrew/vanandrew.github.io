@@ -78,15 +78,15 @@ const ImageGrid: React.FC<ImageGridProps> = ({
             
             {/* Content */}
             {(showTitle || showDescription) && (
-              <div className="absolute inset-0 flex flex-col justify-end p-6 text-white">
+              <div className="absolute inset-0 flex flex-col justify-end p-6 text-mono-white">
                 {showTitle && (
-                  <h3 className="text-xl font-medium mb-2 transform translate-y-4 transition-transform duration-300 group-hover:translate-y-0">
+                  <h3 className="text-xl font-medium mb-2 transform translate-y-4 transition-transform duration-300 group-hover:translate-y-0 text-mono-white">
                     {item.title}
                   </h3>
                 )}
                 
                 {showDescription && item.description && (
-                  <p className="text-sm text-gray-200 opacity-0 transform translate-y-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
+                  <p className="text-sm text-mono-white opacity-0 transform translate-y-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 mt-1">
                     {item.description}
                   </p>
                 )}
