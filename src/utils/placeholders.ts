@@ -30,43 +30,40 @@ export const sampleProjects = [
     id: 'brainextractor',
     title: 'Brain Extractor',
     description: 'A re-implementation of FSL\'s Brain Extraction Tool in Python, providing automated brain extraction for neuroimaging data',
-    imageUrl: '/images/project-1.jpg',
+    imageUrl: '/images/project-1.jpeg',
     link: 'https://github.com/vanandrew/brainextractor'
   },
   {
     id: 'wbsurfer2',
     title: 'WB Surfer 2',
     description: 'CLI tool for making CIFTI-related movies, supporting Connectome Workbench 2.0 for visualizing brain connectivity data',
-    imageUrl: '/images/project-2.jpg',
+    imageUrl: '/images/project-2.jpeg',
     link: 'https://github.com/vanandrew/wbsurfer2'
   },
   {
     id: 'warpkit',
     title: 'Warp Kit',
     description: 'Python library for neuroimaging transforms, implementing the Multi-Echo Distortion Correction (MEDIC) algorithm',
-    imageUrl: '/images/project-3.jpg',
+    imageUrl: '/images/project-3.png',
     link: 'https://github.com/vanandrew/warpkit'
   },
   {
     id: 'project-4',
     title: 'Deep Brain Stimulation Visual Programming',
     description: 'Led development of a visual programming application for DBS surgical procedures, enhancing lead programming for clinicians',
-    imageUrl: '/images/project-4.jpg',
-    link: '/projects/dbs-visual-programming'
+    imageUrl: '/images/project-4.png'
   },
   {
     id: 'project-5',
     title: 'Neuroimaging Pipelines',
-    description: 'Built cloud-based neuroimaging pipelines for clinical targeting in movement-related disorders',
-    imageUrl: '/images/project-5.jpg',
-    link: '/projects/neuroimaging-pipelines'
+    description: 'Built cloud-based neuroimaging pipelines for clinical targeting in movement-related disorders, chronic pain, and treatment-resistant depression',
+    imageUrl: '/images/project-5.png'
   },
   {
     id: 'project-6',
     title: 'FIRMM: Real-time Head Motion Tracking',
     description: 'Developed a real-time head motion tracking system for MRI scanners, resulting in a patented technology and successful startup',
-    imageUrl: '/images/project-6.jpg',
-    link: '/projects/firmm'
+    imageUrl: '/images/project-6.png'
   }
 ];
 

@@ -26,13 +26,23 @@ const ContactForm: React.FC = () => {
     setIsSubmitting(true);
     
     try {
-      // In a real application, you would send the form data to your backend
-      // For now, we'll just simulate a successful submission
-      await new Promise((resolve) => setTimeout(resolve, 1000));
+      // Using Formspree to handle form submissions without a backend
+      const response = await fetch('https://formspree.io/f/movenorw', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
       
-      setSubmitStatus('success');
-      setFormData({ name: '', email: '', message: '' });
+      if (response.ok) {
+        setSubmitStatus('success');
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        throw new Error('Form submission failed');
+      }
     } catch (error) {
+      console.error('Error submitting form:', error);
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);

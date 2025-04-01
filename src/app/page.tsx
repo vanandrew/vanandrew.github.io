@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from 'react';
+import Image from 'next/image';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import Button from '@/components/Button';
@@ -11,6 +12,7 @@ import ImageSection from '@/components/ImageSection';
 import FullWidthImageSection from '@/components/FullWidthImageSection';
 import ImageGrid from '@/components/ImageGrid';
 import anime from 'animejs';
+import { FaBrain, FaRobot, FaCode } from 'react-icons/fa';
 import { 
   fadeInUp, 
   scaleIn, 
@@ -144,7 +146,7 @@ export default function Home() {
               className="flex space-x-6 opacity-0"
             >
               <Button href="/contact" variant="primary" size="large">Contact Me</Button>
-              <Button href="/projects" variant="outline" size="large">View My Work</Button>
+              <Button href="/about" variant="outline" size="large">About Me</Button>
             </div>
           </div>
           <div className="flex justify-center">
@@ -152,10 +154,13 @@ export default function Home() {
               ref={profileRef} 
               className="relative w-80 h-80 rounded-full overflow-hidden border-2 border-white/20 backdrop-blur-sm opacity-0"
             >
-              {/* Replace with your profile image */}
-              <div className="absolute inset-0 bg-black/50 flex items-center justify-center text-white text-lg">
-                Profile Image
-              </div>
+              <Image
+                src="/images/profile.jpeg"
+                alt="Andrew Van"
+                fill
+                className="object-cover"
+                priority
+              />
             </div>
           </div>
         </div>
@@ -187,74 +192,162 @@ export default function Home() {
             />
           </div>
           
-          <div className="grid md:grid-cols-3 gap-10 mt-20">
+          {/* Timeline container */}
+          <div className="relative max-w-3xl mx-auto mt-20">
+            {/* Timeline line */}
+            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-white/10"></div>
+            
+            {/* Neuroimaging Card - Left side */}
             <AnimatedSection 
-              className="p-8 apple-card" 
+              className="relative mb-24" 
               animation="fadeIn" 
               delay={100} 
               threshold={0.2}
             >
-              <AnimatedText 
-                text="Neuroimaging" 
-                tag="h3" 
-                className="text-3xl mb-4" 
-                animation="slideUp"
-                threshold={0.2}
-              />
-              <AnimatedText 
-                text="Expert in MRI and fMRI techniques with extensive experience in developing novel algorithms for brain extraction, distortion correction, and functional connectivity analysis." 
-                tag="p" 
-                className="text-gray-300" 
-                animation="fadeIn"
-                delay={200}
-                threshold={0.2}
-              />
+              {/* Timeline dot */}
+              <div className="absolute left-1/2 top-8 transform -translate-x-1/2 w-6 h-6 rounded-full bg-apple-blue border-4 border-black z-10"></div>
+              
+              {/* Card - positioned to the left */}
+              <div className="ml-0 mr-auto md:ml-0 md:mr-[calc(50%+2rem)] md:pr-8 w-full md:w-[calc(50%-2rem)]">
+                <div className="p-8 apple-card relative group transition-all duration-300 hover:scale-[1.02] hover:shadow-lg border border-white/10 hover:border-apple-blue/50">
+                  {/* Accent line */}
+                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-apple-blue to-apple-green"></div>
+                  
+                  {/* Icon */}
+                  <div className="flex justify-center mb-6">
+                    <div className="w-16 h-16 rounded-full bg-apple-blue/20 flex items-center justify-center text-apple-blue">
+                      <FaBrain size={32} className="animate-pulse" />
+                    </div>
+                  </div>
+                  
+                  <AnimatedText 
+                    text="Neuroimaging" 
+                    tag="h3" 
+                    className="text-3xl mb-4 text-center font-bold" 
+                    animation="slideUp"
+                    threshold={0.2}
+                  />
+                  
+                  <AnimatedText 
+                    text="Expert in MRI and fMRI techniques with extensive experience in developing novel algorithms for brain extraction, distortion correction, and functional connectivity analysis." 
+                    tag="p" 
+                    className="text-gray-300 mb-6" 
+                    animation="fadeIn"
+                    delay={200}
+                    threshold={0.2}
+                  />
+                  
+                  {/* Skill badges */}
+                  <div className="flex flex-wrap gap-2 mt-6">
+                    <span className="bg-apple-blue/20 text-apple-blue px-3 py-1.5 rounded-full text-sm font-medium">fMRI Analysis</span>
+                    <span className="bg-apple-blue/20 text-apple-blue px-3 py-1.5 rounded-full text-sm font-medium">Brain Extraction</span>
+                    <span className="bg-apple-blue/20 text-apple-blue px-3 py-1.5 rounded-full text-sm font-medium">Distortion Correction</span>
+                    <span className="bg-apple-blue/20 text-apple-blue px-3 py-1.5 rounded-full text-sm font-medium">Functional Connectivity</span>
+                  </div>
+                </div>
+              </div>
             </AnimatedSection>
             
+            {/* Machine Learning Card - Right side */}
             <AnimatedSection 
-              className="p-8 apple-card" 
+              className="relative mb-24" 
               animation="fadeIn" 
               delay={200} 
               threshold={0.2}
             >
-              <AnimatedText 
-                text="Machine Learning" 
-                tag="h3" 
-                className="text-3xl mb-4" 
-                animation="slideUp"
-                threshold={0.2}
-              />
-              <AnimatedText 
-                text="Proficient in developing deep learning models using PyTorch and TensorFlow for medical image segmentation, data augmentation, and computer vision applications." 
-                tag="p" 
-                className="text-gray-300" 
-                animation="fadeIn"
-                delay={200}
-                threshold={0.2}
-              />
+              {/* Timeline dot */}
+              <div className="absolute left-1/2 top-8 transform -translate-x-1/2 w-6 h-6 rounded-full bg-apple-orange border-4 border-black z-10"></div>
+              
+              {/* Card - positioned to the right */}
+              <div className="ml-auto mr-0 md:ml-[calc(50%+2rem)] md:pl-8 w-full md:w-[calc(50%-2rem)]">
+                <div className="p-8 apple-card relative group transition-all duration-300 hover:scale-[1.02] hover:shadow-lg border border-white/10 hover:border-apple-orange/50">
+                  {/* Accent line */}
+                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-apple-orange to-apple-red"></div>
+                  
+                  {/* Icon */}
+                  <div className="flex justify-center mb-6">
+                    <div className="w-16 h-16 rounded-full bg-apple-orange/20 flex items-center justify-center text-apple-orange">
+                      <FaRobot size={32} />
+                    </div>
+                  </div>
+                  
+                  <AnimatedText 
+                    text="Machine Learning" 
+                    tag="h3" 
+                    className="text-3xl mb-4 text-center font-bold" 
+                    animation="slideUp"
+                    threshold={0.2}
+                  />
+                  
+                  <AnimatedText 
+                    text="Proficient in developing deep learning models using PyTorch and TensorFlow for medical image segmentation, data augmentation, and computer vision applications." 
+                    tag="p" 
+                    className="text-gray-300 mb-6" 
+                    animation="fadeIn"
+                    delay={200}
+                    threshold={0.2}
+                  />
+                  
+                  {/* Skill badges */}
+                  <div className="flex flex-wrap gap-2 mt-6">
+                    <span className="bg-apple-orange/20 text-apple-orange px-3 py-1.5 rounded-full text-sm font-medium">PyTorch</span>
+                    <span className="bg-apple-orange/20 text-apple-orange px-3 py-1.5 rounded-full text-sm font-medium">TensorFlow</span>
+                    <span className="bg-apple-orange/20 text-apple-orange px-3 py-1.5 rounded-full text-sm font-medium">Computer Vision</span>
+                    <span className="bg-apple-orange/20 text-apple-orange px-3 py-1.5 rounded-full text-sm font-medium">Deep Learning</span>
+                  </div>
+                </div>
+              </div>
             </AnimatedSection>
             
+            {/* Software Engineering Card - Left side */}
             <AnimatedSection 
-              className="p-8 apple-card" 
+              className="relative" 
               animation="fadeIn" 
               delay={300} 
               threshold={0.2}
             >
-              <AnimatedText 
-                text="Software Engineering" 
-                tag="h3" 
-                className="text-3xl mb-4" 
-                animation="slideUp"
-                threshold={0.2}
-              />
-              <AnimatedText 
-                text="Skilled in Python, C++, JavaScript, and Rust with expertise in building containerized applications, CI/CD pipelines, and cloud-based infrastructure for research and clinical applications." 
-                tag="p" 
-                className="text-gray-300" 
-                animation="fadeIn"
-                delay={200}
-                threshold={0.2}
-              />
+              {/* Timeline dot */}
+              <div className="absolute left-1/2 top-8 transform -translate-x-1/2 w-6 h-6 rounded-full bg-apple-green border-4 border-black z-10"></div>
+              
+              {/* Card - positioned to the left */}
+              <div className="ml-0 mr-auto md:ml-0 md:mr-[calc(50%+2rem)] md:pr-8 w-full md:w-[calc(50%-2rem)]">
+                <div className="p-8 apple-card relative group transition-all duration-300 hover:scale-[1.02] hover:shadow-lg border border-white/10 hover:border-apple-green/50">
+                  {/* Accent line */}
+                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-apple-green to-apple-blue"></div>
+                  
+                  {/* Icon */}
+                  <div className="flex justify-center mb-6">
+                    <div className="w-16 h-16 rounded-full bg-apple-green/20 flex items-center justify-center text-apple-green">
+                      <FaCode size={32} />
+                    </div>
+                  </div>
+                  
+                  <AnimatedText 
+                    text="Software Engineering" 
+                    tag="h3" 
+                    className="text-3xl mb-4 text-center font-bold" 
+                    animation="slideUp"
+                    threshold={0.2}
+                  />
+                  
+                  <AnimatedText 
+                    text="Skilled in Python, C++, JavaScript, and Rust with expertise in building containerized applications, CI/CD pipelines, and cloud-based infrastructure for research and clinical applications." 
+                    tag="p" 
+                    className="text-gray-300 mb-6" 
+                    animation="fadeIn"
+                    delay={200}
+                    threshold={0.2}
+                  />
+                  
+                  {/* Skill badges */}
+                  <div className="flex flex-wrap gap-2 mt-6">
+                    <span className="bg-apple-green/20 text-apple-green px-3 py-1.5 rounded-full text-sm font-medium">Python</span>
+                    <span className="bg-apple-green/20 text-apple-green px-3 py-1.5 rounded-full text-sm font-medium">C++</span>
+                    <span className="bg-apple-green/20 text-apple-green px-3 py-1.5 rounded-full text-sm font-medium">JavaScript</span>
+                    <span className="bg-apple-green/20 text-apple-green px-3 py-1.5 rounded-full text-sm font-medium">Rust</span>
+                  </div>
+                </div>
+              </div>
             </AnimatedSection>
           </div>
         </div>
@@ -264,7 +357,7 @@ export default function Home() {
       <FullWidthImageSection
         title="Advancing Medical Imaging"
         subtitle="Developing cutting-edge algorithms for processing and analyzing medical images to aid in diagnosis and treatment"
-        imageUrl={getPlaceholderImage(1920, 1080, "Medical Imaging")}
+        imageUrl="/images/fullwidth/medical-imaging.jpg"
         height="90vh"
         textPosition="left"
         overlayOpacity={0.5}
@@ -272,73 +365,6 @@ export default function Home() {
         <Button href="/about" variant="primary" size="large">Learn More</Button>
       </FullWidthImageSection>
 
-      {/* Featured Project Section */}
-      <AnimatedSection 
-        className="py-32 relative" 
-        animation="slideUp" 
-        threshold={0.1}
-      >
-        <div className="container-custom">
-          <div className="mb-16">
-            <AnimatedText 
-              text="Featured Project" 
-              tag="h2" 
-              className="text-6xl mb-6" 
-              animation="slideUp"
-              threshold={0.2}
-            />
-            <AnimatedText 
-              text="The culmination of years of research and development" 
-              tag="p" 
-              className="text-xl text-gray-300" 
-              animation="fadeIn"
-              delay={200}
-              threshold={0.2}
-            />
-          </div>
-          
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div 
-              ref={featuredImageRef}
-              className="rounded-lg overflow-hidden"
-            >
-              <ImageSection
-                src={getPlaceholderImage(800, 600, "Brain Network Analysis")}
-                alt="Brain Network Analysis"
-                width={800}
-                height={600}
-                animation="fadeIn"
-                parallax={true}
-                className="rounded-lg overflow-hidden"
-              />
-            </div>
-            
-            <AnimatedSection 
-              className="" 
-              animation="fadeIn" 
-              delay={200} 
-              threshold={0.2}
-            >
-              <AnimatedText 
-                text="Multi-Echo Distortion Correction (MEDIC)" 
-                tag="h3" 
-                className="text-4xl mb-6" 
-                animation="slideUp"
-                threshold={0.2}
-              />
-              <AnimatedText 
-                text="Developed a novel algorithm for correcting distortion in echo planar imaging, significantly improving the accuracy and reliability of functional MRI data. Implemented in the Warpkit Python library for neuroimaging transforms." 
-                tag="p" 
-                className="text-gray-300 mb-8" 
-                animation="fadeIn"
-                delay={200}
-                threshold={0.2}
-              />
-              <Button href="https://github.com/vanandrew/warpkit" variant="primary" size="large">View on GitHub</Button>
-            </AnimatedSection>
-          </div>
-        </div>
-      </AnimatedSection>
 
       {/* Projects Grid Section */}
       <AnimatedSection 
@@ -366,10 +392,7 @@ export default function Home() {
           </div>
           
           <ImageGrid 
-            items={sampleProjects.map(project => ({
-              ...project,
-              imageUrl: getPlaceholderImage(800, 600, project.title)
-            }))}
+            items={sampleProjects}
             columns={3}
             gap="gap-8"
             aspectRatio="aspect-video"
@@ -384,7 +407,7 @@ export default function Home() {
       <FullWidthImageSection
         title="Let's Work Together"
         subtitle="Have a project in mind? I'm always open to discussing new ideas and collaborations"
-        imageUrl={getPlaceholderImage(1920, 1080, "Collaboration")}
+        imageUrl="/images/fullwidth/collaboration.jpg"
         height="80vh"
         textPosition="center"
         overlayOpacity={0.6}

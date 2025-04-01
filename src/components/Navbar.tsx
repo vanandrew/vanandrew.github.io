@@ -42,7 +42,6 @@ const Navbar: React.FC = () => {
           <ul className="flex space-x-8">
             <li><Link href="/" className="text-sm text-white/90 hover:text-white transition-colors">Home</Link></li>
             <li><Link href="/about" className="text-sm text-white/90 hover:text-white transition-colors">About</Link></li>
-            <li><Link href="/projects" className="text-sm text-white/90 hover:text-white transition-colors">Projects</Link></li>
             <li><Link href="/contact" className="text-sm text-white/90 hover:text-white transition-colors">Contact</Link></li>
           </ul>
         </nav>
@@ -55,7 +54,6 @@ const Navbar: React.FC = () => {
             <ul className="flex flex-col space-y-6">
               <li><Link href="/" className="block text-white/90 hover:text-white transition-colors" onClick={() => setIsMenuOpen(false)}>Home</Link></li>
               <li><Link href="/about" className="block text-white/90 hover:text-white transition-colors" onClick={() => setIsMenuOpen(false)}>About</Link></li>
-              <li><Link href="/projects" className="block text-white/90 hover:text-white transition-colors" onClick={() => setIsMenuOpen(false)}>Projects</Link></li>
               <li><Link href="/contact" className="block text-white/90 hover:text-white transition-colors" onClick={() => setIsMenuOpen(false)}>Contact</Link></li>
             </ul>
           </nav>
