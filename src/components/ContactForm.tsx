@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState } from 'react';
+import Button from './Button';
 
 const ContactForm: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -39,56 +40,56 @@ const ContactForm: React.FC = () => {
   };
   
   return (
-    <form className="space-y-4" onSubmit={handleSubmit}>
+    <form className="space-y-6" onSubmit={handleSubmit}>
       {submitStatus === 'success' && (
-        <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded">
+        <div className="bg-apple-green/10 border border-apple-green/20 text-apple-green px-4 py-3 rounded-lg">
           Thank you for your message! I'll get back to you soon.
         </div>
       )}
       
       {submitStatus === 'error' && (
-        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
+        <div className="bg-apple-red/10 border border-apple-red/20 text-apple-red px-4 py-3 rounded-lg">
           There was an error sending your message. Please try again.
         </div>
       )}
       
       <div>
-        <label htmlFor="name" className="block mb-1">Name</label>
+        <label htmlFor="name" className="block mb-2 text-sm text-apple-lightgray">Name</label>
         <input
           type="text"
           id="name"
           name="name"
           value={formData.name}
           onChange={handleChange}
-          className="w-full px-4 py-2 rounded bg-gray-800 border border-gray-600 text-white"
+          className="apple-input w-full"
           placeholder="Your Name"
           required
         />
       </div>
       
       <div>
-        <label htmlFor="email" className="block mb-1">Email</label>
+        <label htmlFor="email" className="block mb-2 text-sm text-apple-lightgray">Email</label>
         <input
           type="email"
           id="email"
           name="email"
           value={formData.email}
           onChange={handleChange}
-          className="w-full px-4 py-2 rounded bg-gray-800 border border-gray-600 text-white"
+          className="apple-input w-full"
           placeholder="Your Email"
           required
         />
       </div>
       
       <div>
-        <label htmlFor="message" className="block mb-1">Message</label>
+        <label htmlFor="message" className="block mb-2 text-sm text-apple-lightgray">Message</label>
         <textarea
           id="message"
           name="message"
           value={formData.message}
           onChange={handleChange}
           rows={4}
-          className="w-full px-4 py-2 rounded bg-gray-800 border border-gray-600 text-white"
+          className="apple-input w-full resize-none"
           placeholder="Your Message"
           required
         ></textarea>
@@ -96,7 +97,7 @@ const ContactForm: React.FC = () => {
       
       <button
         type="submit"
-        className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-md font-medium w-full disabled:opacity-50"
+        className="apple-button-primary w-full py-3 disabled:opacity-50"
         disabled={isSubmitting}
       >
         {isSubmitting ? 'Sending...' : 'Send Message'}

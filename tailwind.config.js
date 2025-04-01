@@ -8,6 +8,17 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        apple: {
+          black: '#000000',
+          darkgray: '#1d1d1f',
+          gray: '#86868b',
+          lightgray: '#f5f5f7',
+          blue: '#0071e3',
+          darkblue: '#0077ED',
+          red: '#ff3b30',
+          green: '#34c759',
+          orange: '#ff9500',
+        },
         primary: {
           50: '#f0f9ff',
           100: '#e0f2fe',
@@ -24,7 +35,11 @@ module.exports = {
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
       },
+      backgroundImage: {
+        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+      },
     },
   },
   plugins: [],
+  darkMode: 'class',
 };

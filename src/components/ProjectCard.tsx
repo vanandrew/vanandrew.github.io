@@ -1,6 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import Button from './Button';
 
 type ProjectCardProps = {
   title: string;
@@ -20,41 +21,41 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   technologies,
 }) => {
   return (
-    <div className="bg-white rounded-lg overflow-hidden shadow-md">
-      <div className="h-48 bg-gray-300 relative">
+    <div className="apple-card group transition-all duration-300 hover:scale-[1.02]">
+      <div className="h-48 bg-black/50 relative overflow-hidden">
         {imageUrl ? (
           <Image
             src={imageUrl}
             alt={title}
             fill
-            className="object-cover"
+            className="object-cover opacity-80 group-hover:opacity-100 transition-opacity"
           />
         ) : (
-          <div className="h-full flex items-center justify-center text-gray-600">
+          <div className="h-full flex items-center justify-center text-apple-gray">
             Project Image
           </div>
         )}
       </div>
       <div className="p-6">
-        <h3 className="text-xl font-semibold mb-2">{title}</h3>
-        <p className="text-gray-600 mb-4">{description}</p>
+        <h3 className="text-xl font-medium mb-2 text-white">{title}</h3>
+        <p className="text-apple-gray mb-4 text-sm">{description}</p>
         <div className="flex flex-wrap gap-2 mb-4">
           {technologies.map((tech) => (
-            <span key={tech} className="bg-gray-200 px-2 py-1 rounded text-xs">
+            <span key={tech} className="bg-black/30 text-apple-gray px-2 py-1 rounded-full text-xs">
               {tech}
             </span>
           ))}
         </div>
-        <div className="flex space-x-3">
+        <div className="flex space-x-3 mt-6">
           {demoUrl && (
-            <a href={demoUrl} className="text-blue-600 hover:text-blue-800">
+            <Button href={demoUrl} variant="primary" size="small">
               View Demo
-            </a>
+            </Button>
           )}
           {sourceUrl && (
-            <a href={sourceUrl} className="text-blue-600 hover:text-blue-800">
+            <Button href={sourceUrl} variant="outline" size="small">
               Source Code
-            </a>
+            </Button>
           )}
         </div>
       </div>
