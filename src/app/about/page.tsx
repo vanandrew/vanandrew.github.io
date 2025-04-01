@@ -18,7 +18,7 @@ export default function About() {
                 With extensive experience in MRI and fMRI techniques, I develop cutting-edge algorithms and software solutions for complex medical challenges.
               </p>
               <p className="text-mono-gray mb-6 leading-relaxed">
-                My work spans from developing novel distortion correction methods for echo planar imaging to building cloud-based neuroimaging pipelines for clinical targeting in movement-related disorders.
+                My work spans from developing novel distortion correction methods for echo planar imaging to building cloud-based neuroimaging pipelines for clinical targeting in movement-related disorders, chronic pain, and treatment-resistant depression.
                 I'm passionate about creating tools that enhance medical imaging accuracy and improve patient outcomes.
               </p>
               <p className="text-mono-gray mb-6 leading-relaxed">
