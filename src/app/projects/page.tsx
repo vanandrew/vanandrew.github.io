@@ -36,7 +36,7 @@ export default function Projects() {
       {/* Projects Section */}
       <section className="pt-32 py-24 bg-black">
         <div className="container-custom">
-          <h2 className="text-3xl font-medium mb-16 text-center text-white">My Projects & Publications</h2>
+          <h2 className="text-5xl font-medium mb-16 text-center text-white">My Projects & Publications</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {projects.map((project, index) => (
               <ProjectCard

@@ -37,11 +37,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
         )}
       </div>
       <div className="p-6">
-        <h3 className="text-xl font-medium mb-2 text-white">{title}</h3>
-        <p className="text-apple-gray mb-4 text-sm">{description}</p>
+        <h3 className="text-2xl font-medium mb-2 text-white">{title}</h3>
+        <p className="text-apple-gray mb-4 text-base">{description}</p>
         <div className="flex flex-wrap gap-2 mb-4">
           {technologies.map((tech) => (
-            <span key={tech} className="bg-black/30 text-apple-gray px-2 py-1 rounded-full text-xs">
+            <span key={tech} className="bg-black/30 text-apple-gray px-2 py-1 rounded-full text-sm">
               {tech}
             </span>
           ))}
@@ -53,7 +53,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
             </Button>
           )}
           {sourceUrl && (
-            <Button href={sourceUrl} variant="outline" size="small">
+            <Button href={sourceUrl} variant="secondary" size="small">
               Source Code
             </Button>
           )}

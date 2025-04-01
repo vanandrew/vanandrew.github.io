@@ -23,12 +23,24 @@ body {
 }
 
 @layer base {
-  h1, h2, h3, h4, h5, h6 {
-    @apply font-light tracking-tight text-mono-black;
+  h1 {
+    @apply text-5xl font-light tracking-tight text-mono-black;
+  }
+  
+  h2 {
+    @apply text-4xl font-light tracking-tight text-mono-black;
+  }
+  
+  h3 {
+    @apply text-3xl font-light tracking-tight text-mono-black;
+  }
+  
+  h4, h5, h6 {
+    @apply text-2xl font-light tracking-tight text-mono-black;
   }
   
   p {
-    @apply text-mono-darkgray;
+    @apply text-lg text-mono-darkgray leading-relaxed;
   }
 }
 
@@ -59,7 +71,7 @@ body {
   }
   
   .mono-button {
-    @apply px-5 py-2 text-sm font-light transition-all duration-300;
+    @apply px-5 py-2 text-base font-light transition-all duration-300;
   }
   
   .mono-button-primary {
@@ -75,7 +87,7 @@ body {
   }
   
   .mono-input {
-    @apply bg-mono-white border border-mono-lightgray px-4 py-3 text-mono-black focus:outline-none focus:ring-1 focus:ring-mono-black;
+    @apply bg-mono-white border border-mono-lightgray px-4 py-3 text-mono-black text-base focus:outline-none focus:ring-1 focus:ring-mono-black;
   }
   
   /* Asymmetric spacing utilities */

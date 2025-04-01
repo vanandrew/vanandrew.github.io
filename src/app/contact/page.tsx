@@ -12,7 +12,7 @@ export default function Contact() {
       {/* Contact Section */}
       <section className="pt-32 py-24 bg-mono-white text-mono-black">
         <div className="container-custom">
-          <h2 className="text-3xl font-medium mb-16 text-center">Get In Touch</h2>
+          <h2 className="text-5xl font-medium mb-16 text-center">Get In Touch</h2>
           <div className="grid md:grid-cols-2 gap-16">
             <div>
               <p className="text-mono-gray mb-8 leading-relaxed">
@@ -27,10 +27,10 @@ export default function Contact() {
                   <FaLinkedin size={24} />
                 </a>
               </div>
-              <div className="space-y-3 text-mono-gray">
-                <p><span className="text-mono-black">Email:</span> vanandrew77@gmail.com</p>
-                <p><span className="text-mono-black">Phone:</span> 469-288-9022</p>
-                <p><span className="text-mono-black">Location:</span> United States</p>
+              <div className="space-y-3 text-mono-gray text-lg">
+                <p><span className="text-mono-black font-medium">Email:</span> vanandrew77@gmail.com</p>
+                <p><span className="text-mono-black font-medium">Phone:</span> 469-288-9022</p>
+                <p><span className="text-mono-black font-medium">Location:</span> United States</p>
               </div>
             </div>
             <div className="mono-card p-8 border border-mono-lightgray">

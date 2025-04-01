@@ -52,19 +52,19 @@ const ContactForm: React.FC = () => {
   return (
     <form className="space-y-6" onSubmit={handleSubmit}>
       {submitStatus === 'success' && (
-        <div className="bg-mono-offwhite border border-mono-black/20 text-mono-black px-4 py-3 rounded-lg">
+        <div className="bg-mono-offwhite border border-mono-black/20 text-mono-black px-4 py-3 rounded-lg text-base">
           Thank you for your message! I'll get back to you soon.
         </div>
       )}
       
       {submitStatus === 'error' && (
-        <div className="bg-mono-offwhite border border-mono-black/20 text-mono-black px-4 py-3 rounded-lg">
+        <div className="bg-mono-offwhite border border-mono-black/20 text-mono-black px-4 py-3 rounded-lg text-base">
           There was an error sending your message. Please try again.
         </div>
       )}
       
       <div>
-        <label htmlFor="name" className="block mb-2 text-sm text-mono-black">Name</label>
+        <label htmlFor="name" className="block mb-2 text-base text-mono-black">Name</label>
         <input
           type="text"
           id="name"
@@ -78,7 +78,7 @@ const ContactForm: React.FC = () => {
       </div>
       
       <div>
-        <label htmlFor="email" className="block mb-2 text-sm text-mono-black">Email</label>
+        <label htmlFor="email" className="block mb-2 text-base text-mono-black">Email</label>
         <input
           type="email"
           id="email"
@@ -92,7 +92,7 @@ const ContactForm: React.FC = () => {
       </div>
       
       <div>
-        <label htmlFor="message" className="block mb-2 text-sm text-mono-black">Message</label>
+        <label htmlFor="message" className="block mb-2 text-base text-mono-black">Message</label>
         <textarea
           id="message"
           name="message"
@@ -107,7 +107,7 @@ const ContactForm: React.FC = () => {
       
       <button
         type="submit"
-        className="mono-button-primary w-full py-3 disabled:opacity-50"
+        className="mono-button-primary w-full py-3 text-base disabled:opacity-50"
         disabled={isSubmitting}
       >
         {isSubmitting ? 'Sending...' : 'Send Message'}

@@ -27,7 +27,7 @@ const Navbar: React.FC = () => {
     }`}>
       <div className="container-custom flex justify-between items-center">
         {/* Logo with minimal styling */}
-        <div className="text-xl font-light text-mono-black relative">
+        <div className="text-2xl font-light text-mono-black relative">
           <span className="relative z-10">Andrew Van</span>
           <div className="absolute -bottom-1 left-0 h-px w-12 bg-mono-black"></div>
         </div>
@@ -44,9 +44,9 @@ const Navbar: React.FC = () => {
         {/* Desktop Navigation - equal spacing with lots of negative space */}
         <nav className="hidden md:block">
           <ul className="flex items-center space-x-24">
-            <li><Link href="/" className="text-sm text-mono-black hover:text-mono-darkgray transition-colors">Home</Link></li>
-            <li><Link href="/about" className="text-sm text-mono-black hover:text-mono-darkgray transition-colors">About</Link></li>
-            <li><Link href="/contact" className="text-sm px-5 py-2 bg-mono-black text-mono-white hover:bg-mono-darkgray transition-colors">Contact</Link></li>
+            <li><Link href="/" className="text-base text-mono-black hover:text-mono-darkgray transition-colors">Home</Link></li>
+            <li><Link href="/about" className="text-base text-mono-black hover:text-mono-darkgray transition-colors">About</Link></li>
+            <li><Link href="/contact" className="text-base px-5 py-2 bg-mono-black text-mono-white hover:bg-mono-darkgray transition-colors">Contact</Link></li>
           </ul>
         </nav>
       </div>
@@ -56,10 +56,10 @@ const Navbar: React.FC = () => {
         <div className="md:hidden absolute top-full left-0 right-0 bg-mono-white border-t border-mono-lightgray">
           <nav className="container-custom py-6">
             <ul className="flex flex-col space-y-6">
-              <li><Link href="/" className="block text-mono-black hover:text-mono-darkgray transition-colors" onClick={() => setIsMenuOpen(false)}>Home</Link></li>
-              <li><Link href="/about" className="block text-mono-black hover:text-mono-darkgray transition-colors" onClick={() => setIsMenuOpen(false)}>About</Link></li>
+              <li><Link href="/" className="block text-lg text-mono-black hover:text-mono-darkgray transition-colors" onClick={() => setIsMenuOpen(false)}>Home</Link></li>
+              <li><Link href="/about" className="block text-lg text-mono-black hover:text-mono-darkgray transition-colors" onClick={() => setIsMenuOpen(false)}>About</Link></li>
               <li className="pt-4 border-t border-mono-lightgray">
-                <Link href="/contact" className="inline-block px-5 py-2 bg-mono-black text-mono-white hover:bg-mono-darkgray transition-colors" onClick={() => setIsMenuOpen(false)}>Contact</Link>
+                <Link href="/contact" className="inline-block text-lg px-5 py-2 bg-mono-black text-mono-white hover:bg-mono-darkgray transition-colors" onClick={() => setIsMenuOpen(false)}>Contact</Link>
               </li>
             </ul>
           </nav>

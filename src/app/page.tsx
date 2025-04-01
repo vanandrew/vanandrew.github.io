@@ -140,7 +140,7 @@ export default function Home() {
           <div className="md:w-1/2 text-center md:text-left">
             <p 
               ref={heroSubtitleRef} 
-              className="text-3xl text-mono-gray mb-16 opacity-0 max-w-xl"
+              className="text-4xl text-mono-gray mb-16 opacity-0 max-w-xl"
             >
               Senior Machine Learning Scientist specializing in Neuroimaging and Medical Applications
             </p>
@@ -203,7 +203,7 @@ export default function Home() {
             <AnimatedText 
               text="Fast. Precise. Innovative." 
               tag="h2" 
-              className="text-6xl font-light relative inline-block" 
+              className="text-7xl font-light relative inline-block" 
               animation="wordByWord"
               threshold={0.2}
             />
@@ -229,7 +229,7 @@ export default function Home() {
                 <AnimatedText 
                   text="Neuroimaging" 
                   tag="h3" 
-                  className="text-3xl mb-8 font-light" 
+                  className="text-4xl mb-8 font-light" 
                   animation="slideUp"
                   threshold={0.2}
                 />
@@ -237,7 +237,7 @@ export default function Home() {
                 <AnimatedText 
                   text="Expert in MRI and fMRI techniques with extensive experience in developing novel algorithms for brain extraction, distortion correction, and functional connectivity analysis." 
                   tag="p" 
-                  className="text-mono-gray mb-12" 
+                  className="text-mono-gray text-lg mb-12" 
                   animation="fadeIn"
                   delay={200}
                   threshold={0.2}
@@ -245,8 +245,8 @@ export default function Home() {
                 
                 {/* Skill badges with minimal styling */}
                 <div className="flex flex-wrap gap-8 mt-8">
-                  <span className="border-b border-mono-black px-0 py-1 text-sm font-light">fMRI Analysis</span>
-                  <span className="border-b border-mono-black px-0 py-1 text-sm font-light">MRI Preprocessing</span>
+                  <span className="border-b border-mono-black px-0 py-1 text-base font-light tracking-wide">fMRI Analysis</span>
+                  <span className="border-b border-mono-black px-0 py-1 text-base font-light tracking-wide">MRI Preprocessing</span>
                 </div>
               </div>
             </AnimatedSection>
@@ -269,7 +269,7 @@ export default function Home() {
                 <AnimatedText 
                   text="Machine Learning" 
                   tag="h3" 
-                  className="text-3xl mb-8 font-light text-right" 
+                  className="text-4xl mb-8 font-light text-right" 
                   animation="slideUp"
                   threshold={0.2}
                 />
@@ -277,7 +277,7 @@ export default function Home() {
                 <AnimatedText 
                   text="Proficient in developing deep learning models using PyTorch and TensorFlow for medical image segmentation, data augmentation, and computer vision applications." 
                   tag="p" 
-                  className="text-mono-gray mb-12" 
+                  className="text-mono-gray text-lg mb-12" 
                   animation="fadeIn"
                   delay={200}
                   threshold={0.2}
@@ -285,9 +285,9 @@ export default function Home() {
                 
                 {/* Skill badges with minimal styling */}
                 <div className="flex flex-wrap gap-8 mt-8 justify-end">
-                  <span className="border-b border-mono-black px-0 py-1 text-sm font-light">PyTorch</span>
-                  <span className="border-b border-mono-black px-0 py-1 text-sm font-light">Computer Vision</span>
-                  <span className="border-b border-mono-black px-0 py-1 text-sm font-light">Deep Learning</span>
+                  <span className="border-b border-mono-black px-0 py-1 text-base font-light tracking-wide">PyTorch</span>
+                  <span className="border-b border-mono-black px-0 py-1 text-base font-light tracking-wide">Computer Vision</span>
+                  <span className="border-b border-mono-black px-0 py-1 text-base font-light tracking-wide">Deep Learning</span>
                 </div>
               </div>
             </AnimatedSection>
@@ -310,7 +310,7 @@ export default function Home() {
                 <AnimatedText 
                   text="Software Engineering" 
                   tag="h3" 
-                  className="text-3xl mb-8 font-light text-center" 
+                  className="text-4xl mb-8 font-light text-center" 
                   animation="slideUp"
                   threshold={0.2}
                 />
@@ -318,7 +318,7 @@ export default function Home() {
                 <AnimatedText 
                   text="Skilled in Python, C++, JavaScript, and Rust with expertise in building containerized applications, CI/CD pipelines, and cloud-based infrastructure for research and clinical applications." 
                   tag="p" 
-                  className="text-mono-gray mb-12" 
+                  className="text-mono-gray text-lg mb-12" 
                   animation="fadeIn"
                   delay={200}
                   threshold={0.2}
@@ -326,10 +326,10 @@ export default function Home() {
                 
                 {/* Skill badges with minimal styling */}
                 <div className="flex flex-wrap gap-8 mt-8 justify-center">
-                  <span className="border-b border-mono-black px-0 py-1 text-sm font-light">Python</span>
-                  <span className="border-b border-mono-black px-0 py-1 text-sm font-light">C++</span>
-                  <span className="border-b border-mono-black px-0 py-1 text-sm font-light">JavaScript</span>
-                  <span className="border-b border-mono-black px-0 py-1 text-sm font-light">Rust</span>
+                  <span className="border-b border-mono-black px-0 py-1 text-base font-light tracking-wide">Python</span>
+                  <span className="border-b border-mono-black px-0 py-1 text-base font-light tracking-wide">C++</span>
+                  <span className="border-b border-mono-black px-0 py-1 text-base font-light tracking-wide">JavaScript</span>
+                  <span className="border-b border-mono-black px-0 py-1 text-base font-light tracking-wide">Rust</span>
                 </div>
               </div>
             </AnimatedSection>
@@ -360,7 +360,7 @@ export default function Home() {
             <AnimatedText 
               text="Recent Projects" 
               tag="h2" 
-              className="text-6xl mb-6" 
+              className="text-7xl mb-6" 
               animation="slideUp"
               threshold={0.2}
             />
@@ -396,9 +396,9 @@ export default function Home() {
                 
                 {/* Project Content */}
                 <div className={`md:w-1/2 ${index % 2 === 0 ? 'md:pl-12' : 'md:pr-12'}`}>
-                  <h3 className="text-3xl font-light mb-6">{project.title}</h3>
+                  <h3 className="text-4xl font-light mb-6">{project.title}</h3>
                   {project.description && (
-                    <p className="text-mono-gray mb-8">{project.description}</p>
+                    <p className="text-mono-gray text-lg mb-8">{project.description}</p>
                   )}
                   <Button href={project.link || '#'} variant="text" size="medium">View Project</Button>
                 </div>
