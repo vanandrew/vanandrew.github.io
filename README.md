@@ -1,4 +1,4 @@
-# NoNonsense Portfolio
+# Andrew Van Portfolio
 
 A modern, responsive portfolio website built with Next.js and Tailwind CSS. This template is designed to be easily customizable and deployable to GitHub Pages.
 
