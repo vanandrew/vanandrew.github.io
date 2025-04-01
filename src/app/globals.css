@@ -8,7 +8,7 @@
 :root {
   --foreground-rgb: 245, 245, 247;
   --background-start-rgb: 0, 0, 0;
-  --background-end-rgb: 29, 29, 31;
+  --background-end-rgb: 15, 15, 17;
 }
 
 html {
@@ -26,12 +26,36 @@ body {
     rgb(0, 0, 0); /* Add fallback background color */
   min-height: 100vh;
   background-attachment: fixed; /* Keep the gradient fixed when scrolling */
+  font-weight: 300; /* Set Satoshi Light as default */
 }
 
 @layer base {
   h1, h2, h3, h4, h5, h6 {
-    @apply font-medium tracking-tight;
+    @apply font-light tracking-tight;
   }
+}
+
+/* Abstract geometric patterns */
+.geometric-pattern {
+  position: absolute;
+  opacity: 0.1;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.geometric-circle {
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.geometric-square {
+  transform: rotate(45deg);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.geometric-triangle {
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  background: rgba(255, 255, 255, 0.1);
 }
 
 @layer components {

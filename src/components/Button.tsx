@@ -25,24 +25,33 @@ const Button: React.FC<ButtonProps> = ({
   };
   
   const variantStyles = {
-    primary: 'apple-button-primary',
-    secondary: 'apple-button-secondary',
-    outline: 'apple-button bg-transparent text-apple-blue border border-apple-blue hover:bg-apple-blue/10',
+    primary: 'bg-apple-accent text-black hover:bg-white',
+    secondary: 'bg-apple-darkgray text-white hover:bg-black',
+    outline: 'bg-transparent text-apple-accent border border-apple-accent hover:bg-apple-accent/10',
   };
   
-  const buttonStyles = `${sizeStyles[size]} ${variantStyles[variant]} ${className}`;
+  // Base styles with asymmetric border radius
+  const baseStyles = `font-light rounded-tl-xl rounded-br-xl rounded-tr-sm rounded-bl-sm transition-all duration-300 ${sizeStyles[size]} ${variantStyles[variant]} ${className}`;
   
   if (href) {
     return (
-      <Link href={href} className={buttonStyles}>
-        {children}
+      <Link href={href} className={baseStyles}>
+        <span className="relative">
+          {children}
+        </span>
       </Link>
     );
   }
   
   return (
-    <button className={buttonStyles} onClick={onClick}>
-      {children}
+    <button className={baseStyles} onClick={onClick}>
+      <span className="relative">
+        {children}
+        {/* Decorative element for asymmetry */}
+        {variant === 'primary' && (
+          <span className="absolute -bottom-1 -right-1 w-2 h-2 bg-apple-secondary rounded-full"></span>
+        )}
+      </span>
     </button>
   );
 };

@@ -125,19 +125,28 @@ export default function Home() {
       <BrainNetworkAnimation />
       <Navbar />
 
-      {/* Hero Section */}
-      <section className="relative h-screen flex items-center">
-        <div className="container-custom grid md:grid-cols-2 gap-12 items-center">
-          <div>
+      {/* Hero Section with asymmetric layout */}
+      <section className="relative h-screen flex items-center overflow-hidden">
+        {/* Additional geometric patterns specific to hero section */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="geometric-pattern geometric-circle w-48 h-48 left-1/4 top-1/4 border-apple-accent/20"></div>
+          <div className="geometric-pattern geometric-square w-32 h-32 right-1/4 bottom-1/3 border-apple-secondary/20"></div>
+          <div className="geometric-pattern geometric-triangle w-24 h-24 left-1/3 bottom-1/4 bg-apple-tertiary/5"></div>
+        </div>
+        
+        <div className="container-custom grid md:grid-cols-12 gap-12 items-center">
+          {/* Text content - spans 7 columns with asymmetric padding */}
+          <div className="md:col-span-7 md:pr-16">
             <h1 
               ref={heroTitleRef} 
-              className="text-7xl font-medium mb-6 leading-tight opacity-0"
+              className="text-7xl font-light mb-6 leading-tight opacity-0 relative"
             >
               Andrew Van
+              <div className="absolute -bottom-3 left-0 h-0.5 w-24 bg-apple-accent"></div>
             </h1>
             <p 
               ref={heroSubtitleRef} 
-              className="text-2xl text-gray-300 mb-10 opacity-0"
+              className="text-2xl text-gray-300 mb-10 opacity-0 max-w-xl"
             >
               Senior Machine Learning Scientist specializing in Neuroimaging and Medical Applications
             </p>
@@ -149,10 +158,15 @@ export default function Home() {
               <Button href="/about" variant="outline" size="large">About Me</Button>
             </div>
           </div>
-          <div className="flex justify-center">
+          
+          {/* Profile image - spans 5 columns with offset positioning */}
+          <div className="md:col-span-5 flex justify-center relative">
+            {/* Decorative element behind profile */}
+            <div className="absolute w-64 h-64 rounded-tr-3xl rounded-bl-3xl bg-apple-accent/5 transform rotate-12"></div>
+            
             <div 
               ref={profileRef} 
-              className="relative w-80 h-80 rounded-full overflow-hidden border-2 border-white/20 backdrop-blur-sm opacity-0"
+              className="relative w-80 h-80 rounded-tl-3xl rounded-br-3xl overflow-hidden border border-white/20 backdrop-blur-sm opacity-0 transform -rotate-3"
             >
               <Image
                 src="/images/profile.jpeg"
@@ -161,6 +175,10 @@ export default function Home() {
                 className="object-cover"
                 priority
               />
+              
+              {/* Small accent elements */}
+              <div className="absolute -bottom-2 -right-2 w-12 h-12 bg-apple-accent/20 rounded-full"></div>
+              <div className="absolute -top-2 -left-2 w-8 h-8 border border-apple-secondary/30 rounded-full"></div>
             </div>
           </div>
         </div>
@@ -170,8 +188,8 @@ export default function Home() {
           ref={scrollIndicatorRef} 
           className="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-center opacity-0"
         >
-          <p className="text-sm mb-2">Scroll to discover</p>
-          <div className="w-0.5 h-10 bg-white/30 mx-auto"></div>
+          <p className="text-sm mb-2 font-light">Scroll to discover</p>
+          <div className="w-0.5 h-10 bg-apple-accent/30 mx-auto"></div>
         </div>
       </section>
 
@@ -181,171 +199,161 @@ export default function Home() {
         animation="slideUp" 
         threshold={0.1}
       >
+        {/* Geometric patterns for skills section */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="geometric-pattern geometric-square w-40 h-40 -left-10 top-40 border-apple-accent/10 rotate-12"></div>
+          <div className="geometric-pattern geometric-triangle w-32 h-32 right-20 bottom-40 bg-apple-secondary/5"></div>
+        </div>
+        
         <div className="container-custom">
-          <div className="mb-16 text-center">
+          <div className="mb-16 text-left max-w-3xl mx-auto">
             <AnimatedText 
               text="Fast. Precise. Innovative." 
               tag="h2" 
-              className="text-6xl" 
+              className="text-6xl font-light relative inline-block" 
               animation="wordByWord"
               threshold={0.2}
             />
+            <div className="h-0.5 w-32 bg-apple-accent mt-4"></div>
           </div>
           
-          {/* Timeline container */}
-          <div className="relative max-w-3xl mx-auto mt-20">
-            {/* Timeline line */}
-            <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-white/10"></div>
-            
-            {/* Neuroimaging Card - Left side */}
+          {/* Skills grid with asymmetric layout */}
+          <div className="grid md:grid-cols-12 gap-8 mt-20">
+            {/* Neuroimaging Card - spans 5 columns */}
             <AnimatedSection 
-              className="relative mb-24" 
+              className="md:col-span-5 md:col-start-1" 
               animation="fadeIn" 
               delay={100} 
               threshold={0.2}
             >
-              {/* Timeline dot */}
-              <div className="absolute left-1/2 top-8 transform -translate-x-1/2 w-6 h-6 rounded-full bg-apple-blue border-4 border-black z-10"></div>
-              
-              {/* Card - positioned to the left */}
-              <div className="ml-0 mr-auto md:ml-0 md:mr-[calc(50%+2rem)] md:pr-8 w-full md:w-[calc(50%-2rem)]">
-                <div className="p-8 apple-card relative group transition-all duration-300 hover:scale-[1.02] hover:shadow-lg border border-white/10 hover:border-apple-blue/50">
-                  {/* Accent line */}
-                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-apple-blue to-apple-green"></div>
-                  
-                  {/* Icon */}
-                  <div className="flex justify-center mb-6">
-                    <div className="w-16 h-16 rounded-full bg-apple-blue/20 flex items-center justify-center text-apple-blue">
-                      <FaBrain size={32} className="animate-pulse" />
-                    </div>
+              <div className="p-8 bg-apple-darkgray/90 backdrop-blur-md rounded-tl-3xl rounded-br-3xl overflow-hidden border border-white/10 hover:border-apple-accent/50 transition-all duration-300 hover:translate-y-[-5px] hover:shadow-lg relative group h-full">
+                {/* Accent elements */}
+                <div className="absolute top-0 right-0 w-24 h-1 bg-apple-accent"></div>
+                <div className="absolute bottom-0 left-0 w-1 h-24 bg-apple-accent"></div>
+                
+                {/* Icon with asymmetric positioning */}
+                <div className="flex justify-start mb-6">
+                  <div className="w-16 h-16 rounded-tl-xl rounded-br-xl bg-apple-accent/20 flex items-center justify-center text-apple-accent">
+                    <FaBrain size={32} className="animate-pulse" />
                   </div>
-                  
-                  <AnimatedText 
-                    text="Neuroimaging" 
-                    tag="h3" 
-                    className="text-3xl mb-4 text-center font-bold" 
-                    animation="slideUp"
-                    threshold={0.2}
-                  />
-                  
-                  <AnimatedText 
-                    text="Expert in MRI and fMRI techniques with extensive experience in developing novel algorithms for brain extraction, distortion correction, and functional connectivity analysis." 
-                    tag="p" 
-                    className="text-gray-300 mb-6" 
-                    animation="fadeIn"
-                    delay={200}
-                    threshold={0.2}
-                  />
-                  
-                  {/* Skill badges */}
-                  <div className="flex flex-wrap gap-2 mt-6">
-                    <span className="bg-apple-blue/20 text-apple-blue px-3 py-1.5 rounded-full text-sm font-medium">fMRI Analysis</span>
-                    <span className="bg-apple-blue/20 text-apple-blue px-3 py-1.5 rounded-full text-sm font-medium">Brain Extraction</span>
-                    <span className="bg-apple-blue/20 text-apple-blue px-3 py-1.5 rounded-full text-sm font-medium">Distortion Correction</span>
-                    <span className="bg-apple-blue/20 text-apple-blue px-3 py-1.5 rounded-full text-sm font-medium">Functional Connectivity</span>
-                  </div>
+                </div>
+                
+                <AnimatedText 
+                  text="Neuroimaging" 
+                  tag="h3" 
+                  className="text-3xl mb-4 font-light" 
+                  animation="slideUp"
+                  threshold={0.2}
+                />
+                
+                <AnimatedText 
+                  text="Expert in MRI and fMRI techniques with extensive experience in developing novel algorithms for brain extraction, distortion correction, and functional connectivity analysis." 
+                  tag="p" 
+                  className="text-gray-300 mb-6" 
+                  animation="fadeIn"
+                  delay={200}
+                  threshold={0.2}
+                />
+                
+                {/* Skill badges with asymmetric layout */}
+                <div className="flex flex-wrap gap-2 mt-6">
+                  <span className="bg-apple-accent/10 text-apple-accent px-3 py-1.5 rounded-tl-lg rounded-br-lg text-sm font-light">fMRI Analysis</span>
+                  <span className="bg-apple-accent/10 text-apple-accent px-3 py-1.5 rounded-tl-lg rounded-br-lg text-sm font-light">Brain Extraction</span>
+                  <span className="bg-apple-accent/10 text-apple-accent px-3 py-1.5 rounded-tl-lg rounded-br-lg text-sm font-light">Distortion Correction</span>
+                  <span className="bg-apple-accent/10 text-apple-accent px-3 py-1.5 rounded-tl-lg rounded-br-lg text-sm font-light">Functional Connectivity</span>
                 </div>
               </div>
             </AnimatedSection>
             
-            {/* Machine Learning Card - Right side */}
+            {/* Machine Learning Card - spans 7 columns with offset */}
             <AnimatedSection 
-              className="relative mb-24" 
+              className="md:col-span-7 md:col-start-6 md:mt-16" 
               animation="fadeIn" 
               delay={200} 
               threshold={0.2}
             >
-              {/* Timeline dot */}
-              <div className="absolute left-1/2 top-8 transform -translate-x-1/2 w-6 h-6 rounded-full bg-apple-orange border-4 border-black z-10"></div>
-              
-              {/* Card - positioned to the right */}
-              <div className="ml-auto mr-0 md:ml-[calc(50%+2rem)] md:pl-8 w-full md:w-[calc(50%-2rem)]">
-                <div className="p-8 apple-card relative group transition-all duration-300 hover:scale-[1.02] hover:shadow-lg border border-white/10 hover:border-apple-orange/50">
-                  {/* Accent line */}
-                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-apple-orange to-apple-red"></div>
-                  
-                  {/* Icon */}
-                  <div className="flex justify-center mb-6">
-                    <div className="w-16 h-16 rounded-full bg-apple-orange/20 flex items-center justify-center text-apple-orange">
-                      <FaRobot size={32} />
-                    </div>
+              <div className="p-8 bg-apple-darkgray/90 backdrop-blur-md rounded-tr-3xl rounded-bl-3xl overflow-hidden border border-white/10 hover:border-apple-secondary/50 transition-all duration-300 hover:translate-y-[-5px] hover:shadow-lg relative group h-full">
+                {/* Accent elements */}
+                <div className="absolute top-0 left-0 w-24 h-1 bg-apple-secondary"></div>
+                <div className="absolute bottom-0 right-0 w-1 h-24 bg-apple-secondary"></div>
+                
+                {/* Icon with asymmetric positioning */}
+                <div className="flex justify-end mb-6">
+                  <div className="w-16 h-16 rounded-tr-xl rounded-bl-xl bg-apple-secondary/20 flex items-center justify-center text-apple-secondary">
+                    <FaRobot size={32} />
                   </div>
-                  
-                  <AnimatedText 
-                    text="Machine Learning" 
-                    tag="h3" 
-                    className="text-3xl mb-4 text-center font-bold" 
-                    animation="slideUp"
-                    threshold={0.2}
-                  />
-                  
-                  <AnimatedText 
-                    text="Proficient in developing deep learning models using PyTorch and TensorFlow for medical image segmentation, data augmentation, and computer vision applications." 
-                    tag="p" 
-                    className="text-gray-300 mb-6" 
-                    animation="fadeIn"
-                    delay={200}
-                    threshold={0.2}
-                  />
-                  
-                  {/* Skill badges */}
-                  <div className="flex flex-wrap gap-2 mt-6">
-                    <span className="bg-apple-orange/20 text-apple-orange px-3 py-1.5 rounded-full text-sm font-medium">PyTorch</span>
-                    <span className="bg-apple-orange/20 text-apple-orange px-3 py-1.5 rounded-full text-sm font-medium">TensorFlow</span>
-                    <span className="bg-apple-orange/20 text-apple-orange px-3 py-1.5 rounded-full text-sm font-medium">Computer Vision</span>
-                    <span className="bg-apple-orange/20 text-apple-orange px-3 py-1.5 rounded-full text-sm font-medium">Deep Learning</span>
-                  </div>
+                </div>
+                
+                <AnimatedText 
+                  text="Machine Learning" 
+                  tag="h3" 
+                  className="text-3xl mb-4 font-light text-right" 
+                  animation="slideUp"
+                  threshold={0.2}
+                />
+                
+                <AnimatedText 
+                  text="Proficient in developing deep learning models using PyTorch and TensorFlow for medical image segmentation, data augmentation, and computer vision applications." 
+                  tag="p" 
+                  className="text-gray-300 mb-6" 
+                  animation="fadeIn"
+                  delay={200}
+                  threshold={0.2}
+                />
+                
+                {/* Skill badges with asymmetric layout */}
+                <div className="flex flex-wrap gap-2 mt-6 justify-end">
+                  <span className="bg-apple-secondary/10 text-apple-secondary px-3 py-1.5 rounded-tr-lg rounded-bl-lg text-sm font-light">PyTorch</span>
+                  <span className="bg-apple-secondary/10 text-apple-secondary px-3 py-1.5 rounded-tr-lg rounded-bl-lg text-sm font-light">TensorFlow</span>
+                  <span className="bg-apple-secondary/10 text-apple-secondary px-3 py-1.5 rounded-tr-lg rounded-bl-lg text-sm font-light">Computer Vision</span>
+                  <span className="bg-apple-secondary/10 text-apple-secondary px-3 py-1.5 rounded-tr-lg rounded-bl-lg text-sm font-light">Deep Learning</span>
                 </div>
               </div>
             </AnimatedSection>
             
-            {/* Software Engineering Card - Left side */}
+            {/* Software Engineering Card - spans 6 columns with offset */}
             <AnimatedSection 
-              className="relative" 
+              className="md:col-span-6 md:col-start-3 md:mt-8" 
               animation="fadeIn" 
               delay={300} 
               threshold={0.2}
             >
-              {/* Timeline dot */}
-              <div className="absolute left-1/2 top-8 transform -translate-x-1/2 w-6 h-6 rounded-full bg-apple-green border-4 border-black z-10"></div>
-              
-              {/* Card - positioned to the left */}
-              <div className="ml-0 mr-auto md:ml-0 md:mr-[calc(50%+2rem)] md:pr-8 w-full md:w-[calc(50%-2rem)]">
-                <div className="p-8 apple-card relative group transition-all duration-300 hover:scale-[1.02] hover:shadow-lg border border-white/10 hover:border-apple-green/50">
-                  {/* Accent line */}
-                  <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-apple-green to-apple-blue"></div>
-                  
-                  {/* Icon */}
-                  <div className="flex justify-center mb-6">
-                    <div className="w-16 h-16 rounded-full bg-apple-green/20 flex items-center justify-center text-apple-green">
-                      <FaCode size={32} />
-                    </div>
+              <div className="p-8 bg-apple-darkgray/90 backdrop-blur-md rounded-tl-3xl rounded-tr-3xl overflow-hidden border border-white/10 hover:border-apple-tertiary/50 transition-all duration-300 hover:translate-y-[-5px] hover:shadow-lg relative group h-full">
+                {/* Accent elements */}
+                <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-apple-tertiary"></div>
+                <div className="absolute bottom-0 left-0 w-1 h-24 bg-apple-tertiary"></div>
+                <div className="absolute bottom-0 right-0 w-1 h-24 bg-apple-tertiary"></div>
+                
+                {/* Icon with centered positioning */}
+                <div className="flex justify-center mb-6">
+                  <div className="w-16 h-16 rounded-full bg-apple-tertiary/20 flex items-center justify-center text-apple-tertiary">
+                    <FaCode size={32} />
                   </div>
-                  
-                  <AnimatedText 
-                    text="Software Engineering" 
-                    tag="h3" 
-                    className="text-3xl mb-4 text-center font-bold" 
-                    animation="slideUp"
-                    threshold={0.2}
-                  />
-                  
-                  <AnimatedText 
-                    text="Skilled in Python, C++, JavaScript, and Rust with expertise in building containerized applications, CI/CD pipelines, and cloud-based infrastructure for research and clinical applications." 
-                    tag="p" 
-                    className="text-gray-300 mb-6" 
-                    animation="fadeIn"
-                    delay={200}
-                    threshold={0.2}
-                  />
-                  
-                  {/* Skill badges */}
-                  <div className="flex flex-wrap gap-2 mt-6">
-                    <span className="bg-apple-green/20 text-apple-green px-3 py-1.5 rounded-full text-sm font-medium">Python</span>
-                    <span className="bg-apple-green/20 text-apple-green px-3 py-1.5 rounded-full text-sm font-medium">C++</span>
-                    <span className="bg-apple-green/20 text-apple-green px-3 py-1.5 rounded-full text-sm font-medium">JavaScript</span>
-                    <span className="bg-apple-green/20 text-apple-green px-3 py-1.5 rounded-full text-sm font-medium">Rust</span>
-                  </div>
+                </div>
+                
+                <AnimatedText 
+                  text="Software Engineering" 
+                  tag="h3" 
+                  className="text-3xl mb-4 font-light text-center" 
+                  animation="slideUp"
+                  threshold={0.2}
+                />
+                
+                <AnimatedText 
+                  text="Skilled in Python, C++, JavaScript, and Rust with expertise in building containerized applications, CI/CD pipelines, and cloud-based infrastructure for research and clinical applications." 
+                  tag="p" 
+                  className="text-gray-300 mb-6" 
+                  animation="fadeIn"
+                  delay={200}
+                  threshold={0.2}
+                />
+                
+                {/* Skill badges with centered layout */}
+                <div className="flex flex-wrap gap-2 mt-6 justify-center">
+                  <span className="bg-apple-tertiary/10 text-apple-tertiary px-3 py-1.5 rounded-full text-sm font-light">Python</span>
+                  <span className="bg-apple-tertiary/10 text-apple-tertiary px-3 py-1.5 rounded-full text-sm font-light">C++</span>
+                  <span className="bg-apple-tertiary/10 text-apple-tertiary px-3 py-1.5 rounded-full text-sm font-light">JavaScript</span>
+                  <span className="bg-apple-tertiary/10 text-apple-tertiary px-3 py-1.5 rounded-full text-sm font-light">Rust</span>
                 </div>
               </div>
             </AnimatedSection>
