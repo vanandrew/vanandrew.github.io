@@ -40,7 +40,7 @@ const Footer: React.FC = () => {
             <ul className="space-y-4 text-base">
               <li><Link href="/" className="text-mono-gray hover:text-mono-black transition-colors">Home</Link></li>
               <li><Link href="/about" className="text-mono-gray hover:text-mono-black transition-colors">About</Link></li>
-              <li><Link href="/projects" className="text-mono-gray hover:text-mono-black transition-colors">Projects</Link></li>
+              {/* <li><Link href="/projects" className="text-mono-gray hover:text-mono-black transition-colors">Projects</Link></li> */}
               <li><Link href="/contact" className="text-mono-gray hover:text-mono-black transition-colors">Contact</Link></li>
             </ul>
           </div>
