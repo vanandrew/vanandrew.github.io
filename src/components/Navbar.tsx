@@ -46,6 +46,7 @@ const Navbar: React.FC = () => {
           <ul className="flex items-center space-x-24">
             <li><Link href="/" className="text-base text-mono-black hover:text-mono-darkgray transition-colors">Home</Link></li>
             <li><Link href="/about" className="text-base text-mono-black hover:text-mono-darkgray transition-colors">About</Link></li>
+            <li><Link href="/demos" className="text-base text-mono-black hover:text-mono-darkgray transition-colors">Demos</Link></li>
             <li><Link href="/contact" className="text-base px-5 py-2 bg-mono-black text-mono-white hover:bg-mono-darkgray transition-colors">Contact</Link></li>
           </ul>
         </nav>
@@ -58,6 +59,7 @@ const Navbar: React.FC = () => {
             <ul className="flex flex-col space-y-6">
               <li><Link href="/" className="block text-lg text-mono-black hover:text-mono-darkgray transition-colors" onClick={() => setIsMenuOpen(false)}>Home</Link></li>
               <li><Link href="/about" className="block text-lg text-mono-black hover:text-mono-darkgray transition-colors" onClick={() => setIsMenuOpen(false)}>About</Link></li>
+              <li><Link href="/demos" className="block text-lg text-mono-black hover:text-mono-darkgray transition-colors" onClick={() => setIsMenuOpen(false)}>Demos</Link></li>
               <li className="pt-4 border-t border-mono-lightgray">
                 <Link href="/contact" className="inline-block text-lg px-5 py-2 bg-mono-black text-mono-white hover:bg-mono-darkgray transition-colors" onClick={() => setIsMenuOpen(false)}>Contact</Link>
               </li>

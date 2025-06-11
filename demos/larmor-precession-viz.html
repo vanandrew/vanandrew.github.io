@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Larmor Precession Visualization</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .visualization-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin-top: 20px;
+        }
+        .viz-section {
+            text-align: center;
+            background-color: #f8f8f8;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        canvas {
+            border: 1px solid #ccc;
+            margin: 10px 0;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: white;
+        }
+        .controls {
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #e8f4f8;
+            border-radius: 5px;
+        }
+        .control-row {
+            margin: 10px 0;
+        }
+        .slider-container {
+            display: inline-block;
+            margin-right: 25px;
+        }
+        label {
+            display: inline-block;
+            width: 150px;
+            font-weight: bold;
+        }
+        input[type="range"] {
+            width: 180px;
+            vertical-align: middle;
+        }
+        .value-display {
+            display: inline-block;
+            width: 80px;
+            text-align: right;
+            font-family: monospace;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        h2 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .equation {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+        .info-box {
+            background-color: #fff3cd;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            border-left: 4px solid #ffc107;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .preset-btn {
+            background-color: #2196F3;
+            padding: 8px 16px;
+            font-size: 14px;
+        }
+        .preset-btn:hover {
+            background-color: #1976D2;
+        }
+        .vector-label {
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .field-arrow {
+            stroke: #2196F3;
+            stroke-width: 3;
+            fill: #2196F3;
+        }
+        .spin-up {
+            stroke: #4CAF50;
+            fill: #4CAF50;
+        }
+        .spin-down {
+            stroke: #f44336;
+            fill: #f44336;
+        }
+        .net-mag {
+            stroke: #9C27B0;
+            stroke-width: 4;
+            fill: #9C27B0;
+        }
+        .quantum-box {
+            background-color: #f0f7ff;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            border-left: 4px solid #2196F3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Larmor Precession: Individual Spins in Thermal Equilibrium</h1>
+        
+        <div class="equation">
+            ω₀ = γB₀ &nbsp;&nbsp;&nbsp; (Larmor frequency = gyromagnetic ratio × magnetic field)
+        </div>
+        
+        <div class="info-box">
+            <strong>Key Concept:</strong> Individual nuclear spins exist in quantum states (parallel or anti-parallel to B₀) 
+            but quantum mechanics requires them to precess around B₀ at the Larmor frequency. At thermal equilibrium, 
+            spins are randomly distributed around the precession cone, resulting in zero net transverse magnetization.
+        </div>
+        
+        <div class="controls">
+            <div class="control-row">
+                <div class="slider-container">
+                    <label>Magnetic Field (B₀):</label>
+                    <input type="range" id="b0Field" min="0.5" max="3" step="0.1" value="1.5">
+                    <span class="value-display" id="b0Display">1.5 T</span>
+                </div>
+                <div class="slider-container">
+                    <label>Temperature:</label>
+                    <input type="range" id="temperature" min="250" max="350" step="10" value="300">
+                    <span class="value-display" id="tempDisplay">300 K</span>
+                </div>
+            </div>
+            <div class="control-row">
+                <div class="slider-container">
+                    <label>Animation Speed:</label>
+                    <input type="range" id="animSpeed" min="0" max="3" step="0.1" value="1">
+                    <span class="value-display" id="speedDisplay">1.0x</span>
+                </div>
+                <div class="slider-container">
+                    <label>Number of Spins:</label>
+                    <input type="range" id="numSpins" min="1" max="20" step="1" value="8">
+                    <span class="value-display" id="spinsDisplay">8</span>
+                </div>
+            </div>
+            <div class="control-row">
+                <button id="playPause">Pause</button>
+                <button id="randomize">Randomize Phases</button>
+                <button class="preset-btn" onclick="setPreset(1.5, 300)">Clinical 1.5T</button>
+                <button class="preset-btn" onclick="setPreset(3.0, 300)">High-field 3T</button>
+                <button class="preset-btn" onclick="setPreset(0.5, 300)">Low-field 0.5T</button>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin: 15px 0;">
+            <strong>Larmor Frequency: <span id="larmorFreq" style="color: #2196F3; font-size: 20px;">63.9 MHz</span></strong>
+            <span style="margin-left: 20px;">Population difference: <span id="popDiff">0.0098%</span></span>
+            <span style="margin-left: 20px;">Net M<sub>z</sub>: <span id="netMz">+0.005%</span></span>
+        </div>
+
+        <div class="visualization-grid">
+            <div class="viz-section">
+                <h2>Individual Spins (3D View)</h2>
+                <canvas id="canvas3D" width="380" height="380"></canvas>
+                <p style="font-size: 14px; margin-top: 10px;">
+                    Green: spin-up (parallel to B₀)<br>
+                    Red: spin-down (anti-parallel to B₀)
+                </p>
+            </div>
+            
+            <div class="viz-section">
+                <h2>Transverse Plane (x-y)</h2>
+                <canvas id="canvasTop" width="380" height="380"></canvas>
+                <p style="font-size: 14px; margin-top: 10px;">
+                    Random phase distribution → zero net signal<br>
+                    Purple vector: net transverse magnetization
+                </p>
+            </div>
+            
+            <div class="viz-section">
+                <h2>Energy Level Populations</h2>
+                <canvas id="canvasEnergy" width="380" height="380"></canvas>
+                <p style="font-size: 14px; margin-top: 10px;">
+                    Boltzmann distribution determines populations<br>
+                    ΔE = γℏB₀
+                </p>
+            </div>
+            
+            <div class="viz-section">
+                <h2>Spin Array View</h2>
+                <canvas id="canvasArray" width="380" height="380"></canvas>
+                <p style="font-size: 14px; margin-top: 10px;">
+                    Individual spins in spatial array<br>
+                    Color = phase, arrow = transverse component
+                </p>
+            </div>
+        </div>
+
+        <div class="quantum-box">
+            <h3>Quantum Mechanical Picture:</h3>
+            <ul style="text-align: left;">
+                <li><strong>Spin states:</strong> |↑⟩ (m = +½) parallel to B₀, |↓⟩ (m = -½) anti-parallel to B₀</li>
+                <li><strong>Energy difference:</strong> ΔE = γℏB₀ = ℏω₀</li>
+                <li><strong>Population ratio:</strong> N↓/N↑ = exp(-ΔE/kT) ≈ 1 - γℏB₀/kT</li>
+                <li><strong>Precession:</strong> Both states precess at ω₀, but with opposite z-components</li>
+                <li><strong>Phase coherence:</strong> At equilibrium, phases are random → no net transverse magnetization</li>
+                <li><strong>RF excitation:</strong> Creates phase coherence and population inversion</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // Get canvases and contexts
+        const canvas3D = document.getElementById('canvas3D');
+        const canvasTop = document.getElementById('canvasTop');
+        const canvasEnergy = document.getElementById('canvasEnergy');
+        const canvasArray = document.getElementById('canvasArray');
+        const ctx3D = canvas3D.getContext('2d');
+        const ctxTop = canvasTop.getContext('2d');
+        const ctxEnergy = canvasEnergy.getContext('2d');
+        const ctxArray = canvasArray.getContext('2d');
+        
+        // Controls
+        const b0Slider = document.getElementById('b0Field');
+        const tempSlider = document.getElementById('temperature');
+        const speedSlider = document.getElementById('animSpeed');
+        const spinsSlider = document.getElementById('numSpins');
+        const playPauseBtn = document.getElementById('playPause');
+        const randomizeBtn = document.getElementById('randomize');
+        
+        // State
+        let b0 = 1.5;
+        let temperature = 300;
+        let animSpeed = 1;
+        let numSpins = 8;
+        let time = 0;
+        let isPlaying = true;
+        
+        // Constants
+        const GAMMA_PROTON = 42.58; // MHz/T for hydrogen
+        const h_bar = 1.055e-34; // J·s
+        const k_B = 1.381e-23; // J/K
+        
+        // Spin ensemble
+        let spins = [];
+        
+        class Spin {
+            constructor(isUp, phase) {
+                this.isUp = isUp;
+                this.phase = phase;
+                this.randomPhaseOffset = Math.random() * 2 * Math.PI;
+            }
+        }
+        
+        function initializeSpins() {
+            spins = [];
+            const popDiff = calculatePopulationDifference();
+            const nUp = Math.ceil(numSpins * (0.5 + popDiff/200)); // Slightly more up than down
+            
+            for (let i = 0; i < numSpins; i++) {
+                const isUp = i < nUp;
+                const phase = Math.random() * 2 * Math.PI;
+                spins.push(new Spin(isUp, phase));
+            }
+        }
+        
+        function calculatePopulationDifference() {
+            // Simplified: ΔN/N ≈ γℏB₀/2kT
+            const deltaE = GAMMA_PROTON * 1e6 * h_bar * 2 * Math.PI * b0;
+            const ratio = deltaE / (k_B * temperature);
+            return ratio * 100 / 2; // Percentage difference
+        }
+        
+        function setPreset(field, temp) {
+            b0 = field;
+            temperature = temp;
+            b0Slider.value = field;
+            tempSlider.value = temp;
+            updateDisplays();
+            initializeSpins();
+        }
+        
+        function updateDisplays() {
+            document.getElementById('b0Display').textContent = b0.toFixed(1) + ' T';
+            document.getElementById('tempDisplay').textContent = temperature + ' K';
+            document.getElementById('speedDisplay').textContent = animSpeed.toFixed(1) + 'x';
+            document.getElementById('spinsDisplay').textContent = numSpins;
+            
+            const freq = GAMMA_PROTON * b0;
+            document.getElementById('larmorFreq').textContent = freq.toFixed(1) + ' MHz';
+            
+            const popDiff = calculatePopulationDifference();
+            document.getElementById('popDiff').textContent = popDiff.toFixed(4) + '%';
+            document.getElementById('netMz').textContent = '+' + (popDiff/2).toFixed(3) + '%';
+        }
+        
+        function drawArrow(ctx, x1, y1, x2, y2, color, lineWidth = 3) {
+            const dx = x2 - x1;
+            const dy = y2 - y1;
+            const angle = Math.atan2(dy, dx);
+            
+            ctx.save();
+            ctx.strokeStyle = color;
+            ctx.fillStyle = color;
+            ctx.lineWidth = lineWidth;
+            
+            ctx.beginPath();
+            ctx.moveTo(x1, y1);
+            ctx.lineTo(x2, y2);
+            ctx.stroke();
+            
+            // Arrowhead
+            const headLength = 8;
+            ctx.beginPath();
+            ctx.moveTo(x2, y2);
+            ctx.lineTo(x2 - headLength * Math.cos(angle - Math.PI/6), 
+                      y2 - headLength * Math.sin(angle - Math.PI/6));
+            ctx.lineTo(x2 - headLength * Math.cos(angle + Math.PI/6), 
+                      y2 - headLength * Math.sin(angle + Math.PI/6));
+            ctx.closePath();
+            ctx.fill();
+            
+            ctx.restore();
+        }
+        
+        function draw3DView() {
+            ctx3D.clearRect(0, 0, canvas3D.width, canvas3D.height);
+            
+            const centerX = canvas3D.width / 2;
+            const centerY = canvas3D.height / 2;
+            const scale = 80;
+            
+            // Draw B0 field
+            drawArrow(ctx3D, centerX, centerY + 100, centerX, centerY - 150, '#2196F3', 4);
+            ctx3D.fillStyle = '#2196F3';
+            ctx3D.font = 'bold 16px Arial';
+            ctx3D.fillText('B₀', centerX + 10, centerY - 140);
+            
+            // Draw coordinate indicators
+            ctx3D.strokeStyle = '#ccc';
+            ctx3D.lineWidth = 1;
+            ctx3D.beginPath();
+            ctx3D.moveTo(centerX, centerY);
+            ctx3D.lineTo(centerX + 60, centerY + 30);
+            ctx3D.stroke();
+            ctx3D.fillStyle = '#999';
+            ctx3D.font = '12px Arial';
+            ctx3D.fillText('x', centerX + 65, centerY + 35);
+            
+            ctx3D.beginPath();
+            ctx3D.moveTo(centerX, centerY);
+            ctx3D.lineTo(centerX - 60, centerY + 30);
+            ctx3D.stroke();
+            ctx3D.fillText('y', centerX - 70, centerY + 35);
+            
+            // Draw individual spins
+            const omega = 2 * Math.PI * GAMMA_PROTON * b0 / 1000 * time * animSpeed;
+            
+            spins.forEach((spin, i) => {
+                const currentPhase = spin.phase + omega;
+                const z = spin.isUp ? 0.8 : -0.8;
+                const r = 0.6; // Transverse component magnitude
+                
+                const mx = r * Math.cos(currentPhase);
+                const my = r * Math.sin(currentPhase);
+                
+                // 3D to 2D projection
+                const projX = centerX + scale * (mx * 0.866 - my * 0.866);
+                const projY = centerY - scale * z + scale * (mx * 0.5 + my * 0.5) * 0.3;
+                
+                // Draw spin vector
+                const color = spin.isUp ? '#4CAF50' : '#f44336';
+                drawArrow(ctx3D, centerX, centerY, projX, projY, color, 2);
+                
+                // Draw spin cone (faint)
+                if (i < 3) { // Only draw a few to avoid clutter
+                    ctx3D.strokeStyle = color + '20';
+                    ctx3D.lineWidth = 1;
+                    ctx3D.beginPath();
+                    for (let j = 0; j <= 20; j++) {
+                        const phi = (j / 20) * 2 * Math.PI;
+                        const cx = r * Math.cos(phi);
+                        const cy = r * Math.sin(phi);
+                        const px = centerX + scale * (cx * 0.866 - cy * 0.866);
+                        const py = centerY - scale * z + scale * (cx * 0.5 + cy * 0.5) * 0.3;
+                        if (j === 0) ctx3D.moveTo(px, py);
+                        else ctx3D.lineTo(px, py);
+                    }
+                    ctx3D.closePath();
+                    ctx3D.stroke();
+                }
+            });
+        }
+        
+        function drawTopView() {
+            ctxTop.clearRect(0, 0, canvasTop.width, canvasTop.height);
+            
+            const centerX = canvasTop.width / 2;
+            const centerY = canvasTop.height / 2;
+            const radius = 100;
+            
+            // Draw axes
+            ctxTop.strokeStyle = '#ddd';
+            ctxTop.lineWidth = 1;
+            ctxTop.beginPath();
+            ctxTop.moveTo(centerX - 150, centerY);
+            ctxTop.lineTo(centerX + 150, centerY);
+            ctxTop.moveTo(centerX, centerY - 150);
+            ctxTop.lineTo(centerX, centerY + 150);
+            ctxTop.stroke();
+            
+            ctxTop.fillStyle = '#999';
+            ctxTop.font = '14px Arial';
+            ctxTop.fillText('x', centerX + 155, centerY + 5);
+            ctxTop.fillText('y', centerX + 5, centerY - 155);
+            
+            // B0 indicator (into page)
+            ctxTop.strokeStyle = '#2196F3';
+            ctxTop.lineWidth = 2;
+            ctxTop.beginPath();
+            ctxTop.arc(centerX, centerY, 8, 0, 2 * Math.PI);
+            ctxTop.stroke();
+            ctxTop.beginPath();
+            ctxTop.moveTo(centerX - 12, centerY - 12);
+            ctxTop.lineTo(centerX + 12, centerY + 12);
+            ctxTop.moveTo(centerX - 12, centerY + 12);
+            ctxTop.lineTo(centerX + 12, centerY - 12);
+            ctxTop.stroke();
+            
+            // Draw individual spin projections
+            const omega = 2 * Math.PI * GAMMA_PROTON * b0 / 1000 * time * animSpeed;
+            let netX = 0, netY = 0;
+            
+            spins.forEach(spin => {
+                const currentPhase = spin.phase + omega;
+                const x = centerX + radius * Math.cos(currentPhase);
+                const y = centerY - radius * Math.sin(currentPhase);
+                
+                const color = spin.isUp ? '#4CAF50' : '#f44336';
+                drawArrow(ctxTop, centerX, centerY, x, y, color, 2);
+                
+                // Add to net magnetization
+                netX += Math.cos(currentPhase);
+                netY += Math.sin(currentPhase);
+            });
+            
+            // Draw net transverse magnetization
+            if (numSpins > 0) {
+                netX /= numSpins;
+                netY /= numSpins;
+                const netMag = Math.sqrt(netX * netX + netY * netY);
+                
+                if (netMag > 0.05) { // Only draw if significant
+                    const netEndX = centerX + radius * netX;
+                    const netEndY = centerY - radius * netY;
+                    drawArrow(ctxTop, centerX, centerY, netEndX, netEndY, '#9C27B0', 4);
+                    
+                    ctxTop.fillStyle = '#9C27B0';
+                    ctxTop.font = 'bold 12px Arial';
+                    ctxTop.fillText('M⊥', netEndX + 5, netEndY - 5);
+                }
+            }
+            
+            // Phase distribution indicator
+            ctxTop.fillStyle = '#666';
+            ctxTop.font = '12px Arial';
+            ctxTop.fillText('Random phases → M⊥ ≈ 0', centerX - 70, canvasTop.height - 20);
+        }
+        
+        function drawEnergyDiagram() {
+            ctxEnergy.clearRect(0, 0, canvasEnergy.width, canvasEnergy.height);
+            
+            const centerX = canvasEnergy.width / 2;
+            const centerY = canvasEnergy.height / 2;
+            const levelSpacing = 120;
+            
+            // Energy levels
+            const upperY = centerY - levelSpacing/2;
+            const lowerY = centerY + levelSpacing/2;
+            
+            ctxEnergy.strokeStyle = '#333';
+            ctxEnergy.lineWidth = 3;
+            ctxEnergy.beginPath();
+            ctxEnergy.moveTo(80, upperY);
+            ctxEnergy.lineTo(canvasEnergy.width - 80, upperY);
+            ctxEnergy.moveTo(80, lowerY);
+            ctxEnergy.lineTo(canvasEnergy.width - 80, lowerY);
+            ctxEnergy.stroke();
+            
+            // Energy labels
+            ctxEnergy.fillStyle = '#333';
+            ctxEnergy.font = '14px Arial';
+            ctxEnergy.fillText('E = -½γℏB₀', 20, upperY + 5);
+            ctxEnergy.fillText('E = +½γℏB₀', 20, lowerY + 5);
+            
+            ctxEnergy.fillText('m = +½ (↑)', canvasEnergy.width - 70, upperY + 5);
+            ctxEnergy.fillText('m = -½ (↓)', canvasEnergy.width - 70, lowerY + 5);
+            
+            // Energy difference
+            ctxEnergy.strokeStyle = '#2196F3';
+            ctxEnergy.lineWidth = 2;
+            ctxEnergy.setLineDash([5, 5]);
+            ctxEnergy.beginPath();
+            ctxEnergy.moveTo(centerX, upperY);
+            ctxEnergy.lineTo(centerX, lowerY);
+            ctxEnergy.stroke();
+            ctxEnergy.setLineDash([]);
+            
+            ctxEnergy.fillStyle = '#2196F3';
+            ctxEnergy.font = '16px Arial';
+            ctxEnergy.fillText('ΔE = ℏω₀', centerX + 10, centerY);
+            
+            // Population visualization
+            const popDiff = calculatePopulationDifference();
+            const nUp = Math.round(numSpins * (0.5 + popDiff/200));
+            const nDown = numSpins - nUp;
+            
+            // Draw population dots
+            const dotRadius = 6;
+            const dotSpacing = 20;
+            
+            // Upper level (parallel, lower energy)
+            ctxEnergy.fillStyle = '#4CAF50';
+            for (let i = 0; i < nUp; i++) {
+                const x = 100 + (i % 10) * dotSpacing;
+                const y = upperY - 25 - Math.floor(i / 10) * dotSpacing;
+                ctxEnergy.beginPath();
+                ctxEnergy.arc(x, y, dotRadius, 0, 2 * Math.PI);
+                ctxEnergy.fill();
+            }
+            
+            // Lower level (anti-parallel, higher energy)
+            ctxEnergy.fillStyle = '#f44336';
+            for (let i = 0; i < nDown; i++) {
+                const x = 100 + (i % 10) * dotSpacing;
+                const y = lowerY + 25 + Math.floor(i / 10) * dotSpacing;
+                ctxEnergy.beginPath();
+                ctxEnergy.arc(x, y, dotRadius, 0, 2 * Math.PI);
+                ctxEnergy.fill();
+            }
+            
+            // Population numbers
+            ctxEnergy.fillStyle = '#666';
+            ctxEnergy.font = 'bold 14px Arial';
+            ctxEnergy.fillText('N↑ = ' + nUp, 40, upperY - 40);
+            ctxEnergy.fillText('N↓ = ' + nDown, 40, lowerY + 50);
+            
+            // Boltzmann factor
+            ctxEnergy.font = '12px Arial';
+            const boltzmann = Math.exp(-2 * Math.PI * GAMMA_PROTON * 1e6 * h_bar * b0 / (k_B * temperature));
+            ctxEnergy.fillText('N↓/N↑ = e^(-ΔE/kT) ≈ ' + boltzmann.toFixed(6), centerX - 80, canvasEnergy.height - 30);
+        }
+        
+        function phaseToColor(phase) {
+            // Map phase (0 to 2π) to hue (0 to 360)
+            const hue = (phase % (2 * Math.PI)) / (2 * Math.PI) * 360;
+            return `hsl(${hue}, 100%, 50%)`;
+        }
+        
+        function drawArrayView() {
+            ctxArray.clearRect(0, 0, canvasArray.width, canvasArray.height);
+            
+            // Calculate grid layout
+            const cols = Math.ceil(Math.sqrt(numSpins));
+            const rows = Math.ceil(numSpins / cols);
+            const cellSize = Math.min(canvasArray.width / cols, canvasArray.height / rows) * 0.8;
+            const startX = (canvasArray.width - cols * cellSize) / 2;
+            const startY = (canvasArray.height - rows * cellSize) / 2;
+            
+            const omega = 2 * Math.PI * GAMMA_PROTON * b0 / 1000 * time * animSpeed;
+            
+            spins.forEach((spin, index) => {
+                const col = index % cols;
+                const row = Math.floor(index / cols);
+                const centerX = startX + col * cellSize + cellSize / 2;
+                const centerY = startY + row * cellSize + cellSize / 2;
+                
+                const currentPhase = spin.phase + omega;
+                
+                // Draw background circle with phase color
+                ctxArray.beginPath();
+                ctxArray.arc(centerX, centerY, cellSize * 0.4, 0, 2 * Math.PI);
+                ctxArray.fillStyle = phaseToColor(currentPhase);
+                ctxArray.fill();
+                ctxArray.strokeStyle = spin.isUp ? '#4CAF50' : '#f44336';
+                ctxArray.lineWidth = 3;
+                ctxArray.stroke();
+                
+                // Draw transverse component arrow
+                const arrowLength = cellSize * 0.3;
+                const arrowX = centerX + arrowLength * Math.cos(currentPhase);
+                const arrowY = centerY - arrowLength * Math.sin(currentPhase);
+                
+                ctxArray.strokeStyle = 'black';
+                ctxArray.lineWidth = 2;
+                ctxArray.beginPath();
+                ctxArray.moveTo(centerX, centerY);
+                ctxArray.lineTo(arrowX, arrowY);
+                ctxArray.stroke();
+                
+                // Small arrowhead
+                const headLength = 5;
+                const angle = Math.atan2(centerY - arrowY, arrowX - centerX);
+                ctxArray.beginPath();
+                ctxArray.moveTo(arrowX, arrowY);
+                ctxArray.lineTo(
+                    arrowX - headLength * Math.cos(angle - Math.PI/6),
+                    arrowY + headLength * Math.sin(angle - Math.PI/6)
+                );
+                ctxArray.lineTo(
+                    arrowX - headLength * Math.cos(angle + Math.PI/6),
+                    arrowY + headLength * Math.sin(angle + Math.PI/6)
+                );
+                ctxArray.closePath();
+                ctxArray.fillStyle = 'black';
+                ctxArray.fill();
+                
+                // Small z-component indicator
+                ctxArray.fillStyle = spin.isUp ? '#4CAF50' : '#f44336';
+                ctxArray.font = 'bold 16px Arial';
+                ctxArray.textAlign = 'center';
+                ctxArray.fillText(spin.isUp ? '↑' : '↓', centerX, centerY - cellSize * 0.5);
+            });
+            
+            // Net magnetization summary
+            let sumX = 0, sumY = 0, sumZ = 0;
+            spins.forEach(spin => {
+                const currentPhase = spin.phase + omega;
+                sumX += Math.cos(currentPhase);
+                sumY += Math.sin(currentPhase);
+                sumZ += spin.isUp ? 1 : -1;
+            });
+            
+            ctxArray.fillStyle = '#666';
+            ctxArray.font = '12px Arial';
+            ctxArray.textAlign = 'center';
+            const netTransverse = Math.sqrt(sumX*sumX + sumY*sumY) / numSpins;
+            ctxArray.fillText(`Net M⊥ = ${netTransverse.toFixed(3)}`, canvasArray.width/2, canvasArray.height - 10);
+        }
+        
+        function animate() {
+            if (isPlaying) {
+                time += 0.016; // ~60fps
+            }
+            
+            draw3DView();
+            drawTopView();
+            drawEnergyDiagram();
+            drawArrayView();
+            
+            requestAnimationFrame(animate);
+        }
+        
+        // Event listeners
+        b0Slider.addEventListener('input', (e) => {
+            b0 = parseFloat(e.target.value);
+            updateDisplays();
+        });
+        
+        tempSlider.addEventListener('input', (e) => {
+            temperature = parseInt(e.target.value);
+            updateDisplays();
+            initializeSpins();
+        });
+        
+        speedSlider.addEventListener('input', (e) => {
+            animSpeed = parseFloat(e.target.value);
+            updateDisplays();
+        });
+        
+        spinsSlider.addEventListener('input', (e) => {
+            numSpins = parseInt(e.target.value);
+            updateDisplays();
+            initializeSpins();
+        });
+        
+        playPauseBtn.addEventListener('click', () => {
+            isPlaying = !isPlaying;
+            playPauseBtn.textContent = isPlaying ? 'Pause' : 'Play';
+        });
+        
+        randomizeBtn.addEventListener('click', () => {
+            initializeSpins();
+        });
+        
+        // Make setPreset global
+        window.setPreset = setPreset;
+        
+        // Initialize
+        updateDisplays();
+        initializeSpins();
+        animate();
+    </script>
+</body>
+</html>
