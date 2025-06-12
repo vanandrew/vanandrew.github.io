@@ -486,27 +486,15 @@
             }
             
             drawGrid() {
-                this.ctx.strokeStyle = '#ddd';
+                // Draw k-space background image
+                this.drawKSpaceBackground();
+                
+                // Draw minimal grid lines over the background
+                this.ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
                 this.ctx.lineWidth = 1;
                 
-                // Vertical lines
-                for (let x = 0; x <= 400; x += 40) {
-                    this.ctx.beginPath();
-                    this.ctx.moveTo(x, 0);
-                    this.ctx.lineTo(x, 400);
-                    this.ctx.stroke();
-                }
-                
-                // Horizontal lines
-                for (let y = 0; y <= 400; y += 40) {
-                    this.ctx.beginPath();
-                    this.ctx.moveTo(0, y);
-                    this.ctx.lineTo(400, y);
-                    this.ctx.stroke();
-                }
-                
-                // Center lines (axes)
-                this.ctx.strokeStyle = '#666';
+                // Center lines (axes) - more prominent
+                this.ctx.strokeStyle = 'rgba(255, 255, 255, 0.6)';
                 this.ctx.lineWidth = 2;
                 
                 // Center vertical line (ky = 0)
@@ -522,17 +510,67 @@
                 this.ctx.stroke();
                 
                 // Origin marker
-                this.ctx.fillStyle = '#333';
+                this.ctx.fillStyle = 'rgba(255, 255, 255, 0.8)';
                 this.ctx.beginPath();
                 this.ctx.arc(200, 200, 3, 0, 2 * Math.PI);
                 this.ctx.fill();
             }
             
+            drawKSpaceBackground() {
+                const ctx = this.ctx;
+                const width = this.canvas.width;
+                const height = this.canvas.height;
+                const centerX = width / 2;
+                const centerY = height / 2;
+                
+                // Create a realistic k-space pattern
+                const imageData = ctx.createImageData(width, height);
+                const data = imageData.data;
+                
+                for (let y = 0; y < height; y++) {
+                    for (let x = 0; x < width; x++) {
+                        const index = (y * width + x) * 4;
+                        
+                        // Distance from center
+                        const dx = (x - centerX) / centerX;
+                        const dy = (y - centerY) / centerY;
+                        const distFromCenter = Math.sqrt(dx * dx + dy * dy);
+                        
+                        // Create k-space-like pattern
+                        // High intensity at center (low frequencies)
+                        const centerIntensity = Math.exp(-distFromCenter * 2) * 255;
+                        
+                        // Add some radial structure
+                        const angle = Math.atan2(dy, dx);
+                        const radialPattern = Math.sin(angle * 4) * 0.3 + 0.7;
+                        
+                        // Add some noise for realism
+                        const noise = (Math.random() - 0.5) * 30;
+                        
+                        // Combine patterns
+                        let intensity = centerIntensity * radialPattern + noise;
+                        intensity = Math.max(0, Math.min(255, intensity));
+                        
+                        // Make it look like typical k-space (bright center, darker edges)
+                        const finalIntensity = intensity * 0.8; // Slightly darker overall
+                        
+                        // Set RGB values (grayscale with slight blue tint)
+                        data[index] = finalIntensity * 0.7;     // Red
+                        data[index + 1] = finalIntensity * 0.8; // Green  
+                        data[index + 2] = finalIntensity;       // Blue
+                        data[index + 3] = 255;                  // Alpha
+                    }
+                }
+                
+                ctx.putImageData(imageData, 0, 0);
+            }
+            
             drawTrail(opacity) {
                 if (this.trail.length < 2) return;
                 
-                this.ctx.strokeStyle = `rgba(231, 76, 60, ${opacity * 0.6})`;
-                this.ctx.lineWidth = 2;
+                // Make trail more visible with bright colors
+                this.ctx.strokeStyle = `rgba(255, 255, 0, ${opacity * 0.9})`; // Bright yellow
+                this.ctx.lineWidth = 3; // Thicker line
                 this.ctx.beginPath();
                 
                 this.ctx.moveTo(this.trail[0].x, this.trail[0].y);
@@ -543,20 +581,25 @@
             }
             
             drawCurrentPosition(opacity) {
-                // Outer glow
-                this.ctx.fillStyle = `rgba(231, 76, 60, ${opacity * 0.3})`;
+                // Outer glow - bright and larger
+                this.ctx.fillStyle = `rgba(255, 255, 0, ${opacity * 0.5})`; // Yellow glow
                 this.ctx.beginPath();
-                this.ctx.arc(this.currentPos.x, this.currentPos.y, 12, 0, 2 * Math.PI);
+                this.ctx.arc(this.currentPos.x, this.currentPos.y, 16, 0, 2 * Math.PI);
                 this.ctx.fill();
                 
-                // Main dot
-                this.ctx.fillStyle = `rgba(231, 76, 60, ${opacity})`;
+                // Main dot - bright magenta/pink for high contrast
+                this.ctx.fillStyle = `rgba(255, 20, 147, ${opacity})`; // Bright deep pink
                 this.ctx.beginPath();
-                this.ctx.arc(this.currentPos.x, this.currentPos.y, 6, 0, 2 * Math.PI);
+                this.ctx.arc(this.currentPos.x, this.currentPos.y, 8, 0, 2 * Math.PI);
                 this.ctx.fill();
+                
+                // White border for extra contrast
+                this.ctx.strokeStyle = `rgba(255, 255, 255, ${opacity * 0.9})`;
+                this.ctx.lineWidth = 2;
+                this.ctx.stroke();
                 
                 // Inner highlight
-                this.ctx.fillStyle = `rgba(255, 255, 255, ${opacity * 0.8})`;
+                this.ctx.fillStyle = `rgba(255, 255, 255, ${opacity * 0.9})`;
                 this.ctx.beginPath();
                 this.ctx.arc(this.currentPos.x - 2, this.currentPos.y - 2, 2, 0, 2 * Math.PI);
                 this.ctx.fill();
