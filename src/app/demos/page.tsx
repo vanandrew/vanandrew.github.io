@@ -21,6 +21,11 @@ export default function Demos() {
       description: 'Interactive demonstration of how spatial frequencies in k-space relate to image features. Manipulate kx and ky values to see how they affect spin phase patterns and signal formation.',
       path: '/demos/spin-k-space-viz.html',
     },
+    {
+      title: 'K-Space Navigator',
+      description: 'Interactive tool that lets you navigate through k-space using gradients like an Etch-a-Sketch. Visualize how gradient pulses affect k-space trajectory and signal acquisition in MRI.',
+      path: '/demos/kspace_navigator.html',
+    },
   ];
 
   return (
