@@ -1,78 +1,44 @@
-# Andrew Van Portfolio
+# nononsense.me
 
-A modern, responsive portfolio website built with Next.js and Tailwind CSS. This template is designed to be easily customizable and deployable to GitHub Pages.
+Personal site of Andrew Van. Next.js (static export) on GitHub Pages.
 
-## Features
+The front page runs a real 2-D Fourier reconstruction in the browser: a portrait
+(or a Shepp–Logan phantom) is transformed into k-space and rebuilt from whichever
+phase-encode lines have been acquired. Lines fill in automatically in centric,
+linear or random order, or by dragging across the k-space panel. The headline
+blurs and sharpens with the contiguous low-frequency band that has been acquired.
 
-- 🚀 Built with Next.js 14 and TypeScript
-- 🎨 Styled with Tailwind CSS
-- 📱 Fully responsive design
-- 🌙 Light/dark mode support
-- 🧩 Modular component structure
-- 📝 Easy to customize
-- 🔄 GitHub Actions workflow for automatic deployment
+## Layout
 
-## Getting Started
+```
+src/app/            routes: /, /about, /projects (work), /demos, /contact, 404
+src/components/     Nav, Footer, Section, WorkList, DemoList, ContactForm
+src/components/kspace/
+  KSpaceHero.tsx    the hero instrument (canvas, controls, pointer painting)
+  fft.ts            allocation-free radix-2 2-D FFT
+  phantom.ts        modified Shepp–Logan phantom
+src/data/           site content: work, demos, cv
+public/demos/       standalone MRI teaching demos + shared demo.css
+public/kspace_presentation.html   slide deck (reveal.js)
+```
 
-### Prerequisites
+Fonts (Instrument Serif, Instrument Sans, JetBrains Mono) are self-hosted at build
+time through `next/font/google`. Colours live as CSS variables in
+`src/app/globals.css` and follow the system light/dark preference.
 
-- Node.js (v18 or later)
-- npm or yarn
+## Develop
 
-### Installation
+```bash
+npm ci
+npm run dev        # http://localhost:3000
+npm run build      # static export to ./out
+```
 
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/yourusername/your-portfolio.git
-   cd your-portfolio
-   ```
+Pushing to `master` builds and deploys through `.github/workflows/deploy.yml`.
 
-2. Install dependencies:
-   ```bash
-   npm install
-   # or
-   yarn install
-   ```
+## Editing content
 
-3. Start the development server:
-   ```bash
-   npm run dev
-   # or
-   yarn dev
-   ```
-
-4. Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
-
-## Customization
-
-### Personal Information
-
-Edit the content in `src/app/page.tsx` to update your personal information, projects, skills, and contact details.
-
-### Styling
-
-The project uses Tailwind CSS for styling. You can customize the theme in `tailwind.config.js`.
-
-### Components
-
-The project is built with a modular component structure. You can find all components in the `src/components` directory:
-
-- `Button.tsx`: Reusable button component
-- `Navbar.tsx`: Navigation bar component
-- `Footer.tsx`: Footer component
-- `ProjectCard.tsx`: Card component for displaying projects
-- `ContactForm.tsx`: Contact form component
-
-## Deployment
-
-This template includes a GitHub Actions workflow that automatically builds and deploys your site to GitHub Pages when you push to the main branch.
-
-To deploy your site:
-
-1. Push your changes to the main branch
-2. GitHub Actions will automatically build and deploy your site
-3. Your site will be available at `https://yourusername.github.io/your-portfolio`
-
-## License
-
-This project is open source and available under the [MIT License](LICENSE).
+- Work / publications: `src/data/work.ts`
+- Demos list: `src/data/demos.ts`
+- Experience, education, skills, social links: `src/data/cv.ts`
+- Contact form posts to Formspree (`src/components/ContactForm.tsx`)

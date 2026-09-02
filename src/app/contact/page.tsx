@@ -1,41 +1,43 @@
-import React from 'react';
-import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
+import type { Metadata } from 'next';
+import Section from '@/components/Section';
 import ContactForm from '@/components/ContactForm';
+import { social } from '@/data/cv';
+
+export const metadata: Metadata = {
+  title: 'Contact',
+  description: 'Get in touch with Andrew Van.',
+};
 
 export default function Contact() {
   return (
-    <div className="flex flex-col min-h-screen">
-      <Navbar />
+    <>
+      <header className="wrap page-head">
+        <span className="label">Contact</span>
+        <h1 className="serif page-title">Say hello.</h1>
+        <p className="page-lede">
+          Collaborations, questions about the papers or the code, or anything at the intersection of imaging
+          and machine learning. I read everything.
+        </p>
+      </header>
 
-      {/* Contact Section */}
-      <section className="pt-32 py-24 bg-mono-white text-mono-black">
-        <div className="container-custom">
-          <h2 className="text-5xl font-medium mb-16 text-center">Get In Touch</h2>
-          <div className="grid md:grid-cols-2 gap-16">
-            <div>
-              <p className="text-mono-gray mb-8 leading-relaxed">
-                I'm always open to discussing new projects, creative ideas or opportunities to be part of your vision.
-                Feel free to contact me using the form or through my social media profiles.
-              </p>
-              <div className="flex space-x-6 mb-8">
-                <a href="https://github.com/vanandrew" className="text-mono-gray hover:text-mono-black transition-colors">
-                  <FaGithub size={24} />
-                </a>
-                <a href="https://www.linkedin.com/in/andrew-n-van" className="text-mono-gray hover:text-mono-black transition-colors">
-                  <FaLinkedin size={24} />
-                </a>
-              </div>
-            </div>
-            <div className="mono-card p-8 border border-mono-lightgray">
-              <ContactForm />
-            </div>
-          </div>
-        </div>
-      </section>
+      <Section index="01" title="Message">
+        <ContactForm />
+      </Section>
 
-      <Footer />
-    </div>
+      <Section index="02" title="Elsewhere">
+        <ul className="hero-links label">
+          {social.map((s) => (
+            <li key={s.href}>
+              <a className="arrow-link" href={s.href} target="_blank" rel="noreferrer">
+                {s.label}
+                <span className="arrow ne" aria-hidden="true">
+                  ↗
+                </span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </Section>
+    </>
   );
 }

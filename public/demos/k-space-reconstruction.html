@@ -4,125 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>k-Space Line-by-Line Reconstruction</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 20px;
-            background-color: #f0f0f0;
-        }
-        .container {
-            background-color: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        .visualization-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 30px;
-            margin-top: 20px;
-        }
-        .viz-section {
-            text-align: center;
-        }
-        canvas {
-            border: 1px solid #ccc;
-            margin: 10px 0;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            image-rendering: pixelated;
-        }
-        .controls {
-            margin: 20px 0;
-            padding: 15px;
-            background-color: #f8f8f8;
-            border-radius: 5px;
-            text-align: center;
-        }
-        .slider-container {
-            margin: 10px 0;
-            display: inline-block;
-            margin-right: 20px;
-        }
-        label {
-            display: inline-block;
-            width: 150px;
-            font-weight: bold;
-            text-align: right;
-            margin-right: 10px;
-        }
-        input[type="range"] {
-            width: 200px;
-            vertical-align: middle;
-        }
-        .value-display {
-            display: inline-block;
-            width: 80px;
-            text-align: left;
-            font-family: monospace;
-            margin-left: 10px;
-        }
-        h1, h2 {
-            color: #333;
-        }
-        h2 {
-            font-size: 18px;
-        }
-        .info-box {
-            background-color: #f0f0f0;
-            padding: 10px;
-            border-radius: 5px;
-            margin-top: 10px;
-            font-size: 14px;
-            min-height: 60px;
-        }
-        button {
-            background-color: #4CAF50;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            margin: 5px;
-        }
-        button:hover {
-            background-color: #45a049;
-        }
-        button:active {
-            background-color: #3d8b40;
-        }
-        .mode-buttons {
-            margin: 10px 0;
-        }
-        .mode-buttons button {
-            background-color: #2196F3;
-            padding: 8px 16px;
-            font-size: 14px;
-        }
-        .mode-buttons button.active {
-            background-color: #1565C0;
-        }
-        .mode-buttons button:hover {
-            background-color: #1976D2;
-        }
-        .explanation {
-            background-color: #e8f4f8;
-            padding: 15px;
-            border-radius: 5px;
-            margin-top: 20px;
-            text-align: left;
-        }
-        .highlight-line {
-            stroke: red;
-            stroke-width: 3;
-        }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="/demos/demo.css">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <style>canvas{image-rendering:pixelated}</style>
 </head>
 <body>
+<nav class="demo-nav"><div class="demo-nav-inner"><a class="demo-brand" href="/">Andrew Van</a><a class="demo-back" href="/demos">&larr; All demos</a></div></nav>
+
     <div class="container">
         <h1>k-Space Line-by-Line MR Image Reconstruction</h1>
         

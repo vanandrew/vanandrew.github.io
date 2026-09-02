@@ -1,33 +1,22 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [
-    './src/pages/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/components/**/*.{js,ts,jsx,tsx,mdx}',
-    './src/app/**/*.{js,ts,jsx,tsx,mdx}',
-  ],
+  content: ['./src/**/*.{js,ts,jsx,tsx,mdx}'],
   theme: {
     extend: {
       colors: {
-        mono: {
-          black: '#000000',
-          darkgray: '#303030',
-          gray: '#909090',
-          lightgray: '#E0E0E0',
-          offwhite: '#F5F5F5',
-          white: '#FFFFFF',
-        },
+        bg: 'var(--bg)',
+        fg: 'var(--fg)',
+        muted: 'var(--muted)',
+        faint: 'var(--faint)',
+        line: 'var(--line)',
+        accent: 'var(--accent)',
       },
       fontFamily: {
-        sans: ['Satoshi', 'sans-serif'],
-      },
-      fontWeight: {
-        light: 300,
-      },
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+        serif: ['var(--font-serif)', 'Georgia', 'serif'],
+        sans: ['var(--font-sans)', 'system-ui', 'sans-serif'],
+        mono: ['var(--font-mono)', 'ui-monospace', 'monospace'],
       },
     },
   },
   plugins: [],
-  darkMode: 'class',
 };

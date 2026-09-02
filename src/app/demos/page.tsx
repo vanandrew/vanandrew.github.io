@@ -1,65 +1,33 @@
-import React from 'react';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
-import Link from 'next/link';
+import type { Metadata } from 'next';
+import Section from '@/components/Section';
+import DemoList from '@/components/DemoList';
+import { demos } from '@/data/demos';
+
+export const metadata: Metadata = {
+  title: 'Teaching',
+  description:
+    'Interactive MRI physics demos built for teaching: k-space, Larmor precession, spatial frequency and reconstruction.',
+};
 
 export default function Demos() {
-  // Demo data
-  const demos = [
-    {
-      title: 'k-Space Line-by-Line Reconstruction',
-      description: 'Interactive visualization of MRI k-space reconstruction showing how different acquisition patterns affect image quality. Demonstrates truncation artifacts, blurring, and the importance of central k-space lines.',
-      path: '/demos/k-space-reconstruction.html',
-    },
-    {
-      title: 'Larmor Precession Visualization',
-      description: 'Explore the quantum mechanical behavior of nuclear spins in a magnetic field. Visualize individual spins, precession, and how temperature and field strength affect the population difference.',
-      path: '/demos/larmor-precession-viz.html',
-    },
-    {
-      title: '2D k-Space MRI Spin Visualization',
-      description: 'Interactive demonstration of how spatial frequencies in k-space relate to image features. Manipulate kx and ky values to see how they affect spin phase patterns and signal formation.',
-      path: '/demos/spin-k-space-viz.html',
-    },
-    {
-      title: 'K-Space Navigator',
-      description: 'Interactive tool that lets you navigate through k-space using gradients like an Etch-a-Sketch. Visualize how gradient pulses affect k-space trajectory and signal acquisition in MRI.',
-      path: '/demos/kspace_navigator.html',
-    },
-  ];
-
   return (
-    <div className="flex flex-col min-h-screen">
-      <Navbar />
+    <>
+      <header className="wrap page-head">
+        <span className="label">Teaching</span>
+        <h1 className="serif page-title">MRI physics you can poke at.</h1>
+        <p className="page-lede">
+          Small, self-contained pages I built for teaching how MR images come to be. Each one runs entirely
+          in the browser; nothing to install, nothing tracked.
+        </p>
+      </header>
 
-      {/* Demos Section */}
-      <section className="pt-32 py-24 bg-black">
-        <div className="container-custom">
-          <h2 className="text-5xl font-medium mb-6 text-center text-white">MRI Demos</h2>
-          <p className="text-xl text-center text-gray-300 mb-16 max-w-3xl mx-auto">
-            Interactive visualizations demonstrating key concepts in magnetic resonance imaging.
-          </p>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {demos.map((demo, index) => (
-              <div key={index} className="bg-white rounded-lg overflow-hidden shadow-lg transition-transform duration-300 hover:transform hover:scale-105">
-                <div className="p-6">
-                  <h3 className="text-xl font-medium mb-3">{demo.title}</h3>
-                  <p className="text-gray-600 mb-4">{demo.description}</p>
-                  <Link 
-                    href={demo.path}
-                    className="inline-block px-6 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors"
-                  >
-                    Launch Demo
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <Section index="01" title="Interactive">
+        <DemoList items={demos.filter((d) => d.kind === 'Interactive')} />
+      </Section>
 
-      <Footer />
-    </div>
+      <Section index="02" title="Slides">
+        <DemoList items={demos.filter((d) => d.kind === 'Slides')} />
+      </Section>
+    </>
   );
 }

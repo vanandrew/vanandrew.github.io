@@ -1,119 +1,71 @@
-"use client";
+'use client';
 
-import React, { useState } from 'react';
-import Button from './Button';
+import { useState } from 'react';
 
-const ContactForm: React.FC = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
-  });
-  
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
-  
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: value,
-    }));
-  };
-  
-  const handleSubmit = async (e: React.FormEvent) => {
+type Status = 'idle' | 'sending' | 'sent' | 'error';
+
+export default function ContactForm() {
+  const [status, setStatus] = useState<Status>('idle');
+
+  const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    
+    const form = e.currentTarget;
+    const data = Object.fromEntries(new FormData(form).entries());
+    setStatus('sending');
     try {
-      // Using Formspree to handle form submissions without a backend
-      const response = await fetch('https://formspree.io/f/movenorw', {
+      const res = await fetch('https://formspree.io/f/movenorw', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(data),
       });
-      
-      if (response.ok) {
-        setSubmitStatus('success');
-        setFormData({ name: '', email: '', message: '' });
-      } else {
-        throw new Error('Form submission failed');
-      }
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      setSubmitStatus('error');
-    } finally {
-      setIsSubmitting(false);
+      if (!res.ok) throw new Error(`Formspree responded ${res.status}`);
+      form.reset();
+      setStatus('sent');
+    } catch {
+      setStatus('error');
     }
   };
-  
+
   return (
-    <form className="space-y-6" onSubmit={handleSubmit}>
-      {submitStatus === 'success' && (
-        <div className="bg-mono-offwhite border border-mono-black/20 text-mono-black px-4 py-3 rounded-lg text-base">
-          Thank you for your message! I'll get back to you soon.
-        </div>
+    <form className="form" onSubmit={onSubmit} noValidate={false}>
+      {status === 'sent' && (
+        <p className="notice" role="status">
+          Thanks. Your message is on its way; I’ll reply soon.
+        </p>
       )}
-      
-      {submitStatus === 'error' && (
-        <div className="bg-mono-offwhite border border-mono-black/20 text-mono-black px-4 py-3 rounded-lg text-base">
-          There was an error sending your message. Please try again.
-        </div>
+      {status === 'error' && (
+        <p className="notice" role="alert">
+          That didn’t send. Please try again, or reach me on LinkedIn.
+        </p>
       )}
-      
-      <div>
-        <label htmlFor="name" className="block mb-2 text-base text-mono-black">Name</label>
-        <input
-          type="text"
-          id="name"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          className="mono-input w-full"
-          placeholder="Your Name"
-          required
-        />
+
+      <div className="field">
+        <label className="label" htmlFor="name">
+          Name
+        </label>
+        <input className="input" id="name" name="name" type="text" autoComplete="name" required />
       </div>
-      
-      <div>
-        <label htmlFor="email" className="block mb-2 text-base text-mono-black">Email</label>
-        <input
-          type="email"
-          id="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          className="mono-input w-full"
-          placeholder="Your Email"
-          required
-        />
+
+      <div className="field">
+        <label className="label" htmlFor="email">
+          Email
+        </label>
+        <input className="input" id="email" name="email" type="email" autoComplete="email" required />
       </div>
-      
-      <div>
-        <label htmlFor="message" className="block mb-2 text-base text-mono-black">Message</label>
-        <textarea
-          id="message"
-          name="message"
-          value={formData.message}
-          onChange={handleChange}
-          rows={4}
-          className="mono-input w-full resize-none"
-          placeholder="Your Message"
-          required
-        ></textarea>
+
+      <div className="field">
+        <label className="label" htmlFor="message">
+          Message
+        </label>
+        <textarea className="input" id="message" name="message" rows={5} required />
       </div>
-      
-      <button
-        type="submit"
-        className="mono-button-primary w-full py-3 text-base disabled:opacity-50"
-        disabled={isSubmitting}
-      >
-        {isSubmitting ? 'Sending...' : 'Send Message'}
-      </button>
+
+      <div>
+        <button className="btn" type="submit" disabled={status === 'sending'}>
+          {status === 'sending' ? 'Sending' : 'Send'}
+          <span aria-hidden="true">→</span>
+        </button>
+      </div>
     </form>
   );
-};
-
-export default ContactForm;
+}
