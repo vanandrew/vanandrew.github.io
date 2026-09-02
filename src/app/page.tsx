@@ -21,14 +21,14 @@ export default function Home() {
         <div className="hero-grid">
           <div className="hero-copy">
             <p className="lede">
-              Machine learning scientist working on neuroimaging. I build the{' '}
+              Machine learning engineer working on neuroimaging. I build the{' '}
               <em className="serif">pipelines and models</em> that turn raw brain scans into data people
               can trust.
             </p>
             <p className="muted" style={{ margin: 0 }}>
-              Image processing for MRI and fMRI, deep learning for medical images, and the cloud
-              infrastructure that runs them for clinical use. Ph.D. in Biomedical Engineering, Washington
-              University in St. Louis.
+              Senior Machine Learning Engineer at Centile Bioscience. Image processing for MRI and fMRI, deep
+              learning for medical images, and the cloud infrastructure that runs them for clinical use.
+              Ph.D. in Biomedical Engineering, Washington University in St. Louis.
             </p>
             <ul className="hero-links label">
               {social.map((s) => (

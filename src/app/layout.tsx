@@ -25,7 +25,7 @@ const mono = JetBrains_Mono({
 });
 
 const description =
-  'Machine learning scientist working on neuroimaging: processing pipelines, deep learning for medical images, and the tools that get them into clinical use.';
+  'Senior Machine Learning Engineer at Centile Bioscience, working on neuroimaging: processing pipelines, deep learning for medical images, and the tools that get them into clinical use.';
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://nononsense.me'),

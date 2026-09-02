@@ -6,7 +6,7 @@ import { education, experience, skills, social } from '@/data/cv';
 export const metadata: Metadata = {
   title: 'About',
   description:
-    'Andrew Van is a machine learning scientist working on neuroimaging: processing pipelines, deep learning for medical images, and clinical tooling.',
+    'Andrew Van is a Senior Machine Learning Engineer at Centile Bioscience working on neuroimaging: processing pipelines, deep learning for medical images, and clinical tooling.',
 };
 
 export default function About() {
@@ -18,8 +18,8 @@ export default function About() {
           Raw scans in, <em>usable</em> data out.
         </h1>
         <p className="page-lede">
-          I’m a machine learning scientist specialising in neuroimaging: the processing that turns raw MRI into
-          analysis-ready data, and the models that learn from it.
+          I’m a Senior Machine Learning Engineer at Centile Bioscience, specialising in neuroimaging: the
+          processing that turns raw MRI into analysis-ready data, and the models that learn from it.
         </p>
       </header>
 

@@ -1,7 +1,8 @@
 export type CvItem = { when: string; what: string; where: string };
 
 export const experience: CvItem[] = [
-  { when: '2025 —', what: 'Senior Machine Learning Scientist', where: 'Turing Medical' },
+  { when: '2026 —', what: 'Senior Machine Learning Engineer', where: 'Centile Bioscience' },
+  { when: '2025 — 2026', what: 'Senior Machine Learning Scientist', where: 'Turing Medical' },
   { when: '2023 — 2025', what: 'Machine Learning Scientist', where: 'Turing Medical' },
   { when: '2023', what: 'Visiting Scholar', where: 'Perelman School of Medicine, University of Pennsylvania' },
   { when: '2018 — 2023', what: 'Ph.D. Candidate, Biomedical Engineering', where: 'Washington University in St. Louis' },
